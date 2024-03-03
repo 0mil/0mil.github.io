@@ -14,7 +14,7 @@ name                     : &name "Jin (Hyeong) Park"
 description              : &description "Research Scientist at Neowiz, M.S at CAU"
 url                      : https://0mil.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "0mil/jinpark.github.io"
+repository               : "0mil/0mil.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
