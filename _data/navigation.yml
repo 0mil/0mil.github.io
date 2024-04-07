@@ -1,10 +1,10 @@
 # main links links
 main:
   - title: "CV"
-    url: /publications/
+    url: /files/Jin-Hyeong Park, CV.pdf
     
   - title: "Publications & Projects"
     url: /publications/
 
   - title: "Gallery"
-    url: /talks/    
+    url: /gallery/    

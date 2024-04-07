@@ -8,9 +8,9 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Jin (Hyeong) Park"
+title                    : "Jin Park"
 title_separator          : "-"
-name                     : &name "Jin (Hyeong) Park"
+name                     : &name "Jin Park"
 description              : &description "Research Scientist at Neowiz, M.S at CAU"
 url                      : https://0mil.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -21,7 +21,7 @@ repository               : "0mil/0mil.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "jinpark_profile.jpg"
+  avatar           : "profile.jpg"
   name             : #"Your Sidebar Name"
   pronouns         : # example: "she/her"  
   bio              : "Research Scientist at Neowiz, M.S at CAU"
