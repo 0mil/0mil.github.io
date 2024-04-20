@@ -1,0 +1,17 @@
+---
+layout: archive
+title: "Gallery"
+permalink: /gallery/
+author_profile: true
+---
+
+{% include base_path %}
+<div class="wordwrap" style="margin: 10px 0px 30px 5px">I am fascinated by all things graphical including Computer Graphics, Analog Drawing, 3D Animation, and more.<br><b>Feel free to talk to me about anything related to graphics</b>, whether it's technical programming skills, aesthetic considerations, or your personal experiences.<br>If you share a passion for graphics, I'm sure we'll get along great. :)</div>
+
+<div class="portfolio-grid">
+  {% for post in site.portfolio reversed %}
+    <div class="portfolio-item">
+      {% include archive-single.html %}
+    </div>
+  {% endfor %}
+</div>
