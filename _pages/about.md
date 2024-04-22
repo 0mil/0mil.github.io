@@ -19,13 +19,13 @@ Following my graduation, I was fortunate enough to serve my military duty as a T
 
 My research interests lie in **physically-based rendering**, **geometry processing**, and **machine learning**.
 
-Experience
+Professional Experience
 ---
 **AI Research Institute, Neowiz**  
-*Research Engineer*
+*Research Engineer*<span style="float:right;">Dec 2020 - Present</span>
 
 **Machine Intelligence Lab, CAU**  
-*Research Assistant*
+*Research Assistant*<span style="float:right;">Mar 2018 - Aug 2020</span>
 
 Publications
 ---
@@ -33,12 +33,12 @@ Publications
 > **Multi-label Naïve Bayes Classifier Considering Label Dependence**  
 > Hae Cheon Kim, **Jin-Hyeong Park**, Dae Won Kim, Jaesung Lee  
 > ***Pattern Recognition Letters****, Vol. 136(1), pp. 279-285, 1 August 2020*  
-> [[paper]](http://academicpages.github.io/files/paper1.pdf)
+> [[paper]](/files/paper1.pdf)
 
 > **Compact Feature Subset Based Multi-label Music Categorization for Mobile Devices**  
 > Jaesung Lee, Wangduk Seo, **Jin-Hyeong Park**, Dae Won Kim    
 > ***Multimedia Tools and Applications****, Vol. 78, pp. 4869-4883, 11 May 2018*  
-> [[paper]](http://academicpages.github.io/files/paper2.pdf)
+> [[paper]](/files/paper2.pdf)
 
 
 ### International Conference Papers  
