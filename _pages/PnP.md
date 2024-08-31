@@ -3,10 +3,24 @@ permalink: /PnP/
 title: "Projects & Publications"
 author_profile: true
 ---
+
+
 ## Contents
+* [Biography](#biography)
 * [Research Projects](#research-projects)
-* [Personal Experience](#personal-experience)
+* [Personal Experience](#personal-computer-graphics-experience)
 * [Publications](#publications)
+
+## Biography
+Jinhyeong Park is currently working as an AI research engineer at Neowiz, South Korea. He received his master's degree in Computer Science and Engineering at Chung-Ang University, and his masters works were focused on machine learning.
+Jinhyeong has aimed his career to leveraging neural networks to enhance and diversify the aspects of game development. Jinhyeong’s professional experience includes working at a leading game company, where he applied data-driven approaches to improve the efficiency and quality of tasks involving 3D assets, sound, and game contents. By integrating advanced neural network techniques, he automated processes, optimized resource retrieval, and created more realistic and engaging visual and audio experiences in games.
+
+<p align="left">
+    <img src="/images/PnP/PnP_Lip_Sync.png" alt="Description" style="float:left; margin-right:10px; width:150px;" />
+    This is the text that will wrap around the image. You can continue to write your content here, and it will naturally flow around the image to the left.
+</p>
+He is eager to delve deeper into the field of computer graphics, with a specific focus on using neural approaches to find sophisticated representations for visual appearance. The goal is to explore innovative solutions to capture and render intricate visual details, enhancing the realism and immersion of digital media. By advancing the state-of-the-art in neural network applications for computer graphics, he aims to contribute to the creation of immersive and stunning visual experiences in the digital media industries. Going through emerging technologies, he is wholeheartedly committed to driving innovation and shaping the future of computer graphics.
+
 
 ## Research Projects
 > **Preliminary Research on Motion In-Betweening for 3D Character Animation**  
@@ -41,20 +55,21 @@ author_profile: true
 
 ![PnP_Medical_Image](/images/PnP/PnP_Medical_Image.png)
 > **Development of Computer based Three-Dimensional Medical Image Analysis Program for the Objective Assessment of Orbital Disease**  
-> ***Neowiz***,  Sep 2018 - Oct 2019 
-> ***Keyword:*** Computer Vision, 3D Deep Learning  
+> ***Neowiz***,  Sep 2018 - Oct 2019  
+> ***Keyword:*** 3D Medical Image(CT), XAI, Deep Learning  
 > Explored the classification of thyroid orbitopathy in medical CT images using 3D Convolution-base Neural Networks  
 
 ## Personal Computer Graphics Experience
 
-> **Path Tracer**  
-> Mar 2024 
+> **Ray Tracing Implementation**  
+> Implemented a basic ray tracing engine from scratch following the concepts in "Ray Tracing in One Weekend" Series.
 
-> **Neural Radiance Field(NeRF) for Photorealistic 3D Reconstructions**  
-> Oct 2023 
+> **NeRF Implementation and Key Research Review**  
+> Reviewed key research papers on NeRF, summarizing the core techniques and advancements, to deepen understanding of 3D scene reconstruction and rendering methods. 
 
-> **Phong Shading**  
-> Oct 2023 
+> **Computer Grpahics with DirectX 11**  
+> Implemented various computer graphics concepts using DirectX 11, gaining experience in Physically-Based Rendering, Compute Shaders, Particle Animation, Phong Shading, and Geometry Processing.
+
 
 ## Publications
 <div class="wordwrap">You can also find the belowing articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
