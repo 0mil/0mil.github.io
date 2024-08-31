@@ -8,7 +8,7 @@ author_profile: true
 ## Contents
 * [Biography](#biography)
 * [Research Projects](#research-projects)
-* [Personal Experience](#personal-computer-graphics-experience)
+* [Personal Computer Graphics Experience](#personal-computer-graphics-experience)
 * [Publications](#publications)
 
 ## Biography
