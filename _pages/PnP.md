@@ -21,6 +21,7 @@ Jinhyeong has aimed his career to leveraging neural networks to enhance and dive
 </p>
 
 ## Research Projects
+![PnP_Lip_Sync](/images/PnP/Pnp_Hair_Modeling.png)
 > **Automated Hair Guide Model Generation for Game Characters from 3D Reconstruction**  
 > ***Neowiz****, Apr 2024 - Present*  
 > ***Keyword:*** 3D Content Generation, Inverse Rendering, Geometry Processing  
@@ -28,7 +29,7 @@ Jinhyeong has aimed his career to leveraging neural networks to enhance and dive
 
 > **Enhanced Game Image Generation AI Service Development and Feature Integration**  
 > ***Neowiz****, Jan 2024 - Present*  
-> ***Keyword:*** Stable Diffusion-based Image Generation  
+> ***Keyword:*** Stable Diffusion-based Image Generation, Human-Computer Interaction 
 > Developed and enhanced the AI service for game artwork by integrating features including concept art generation from sketches, specific art style application, and diverse background variations from prompts
 
 > **Preliminary Research on Motion In-Betweening for 3D Character Animation**  
