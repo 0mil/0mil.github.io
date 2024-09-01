@@ -17,7 +17,7 @@ I received my master's degree in Computer Science from Chung-Ang University in K
 
 Following my graduation, I was fortunate enough to serve my military duty as a Technical Research Personnel in the industry. This allowed me to work at Neowiz, where I engaged in projects integrating AI into game content creation, including 3D character animation, SFX(Sound Effects), and content QC(Quality Control) for AAA games. These invaluable experiences in the gaming industry have deeply fueled my passion for the field of computer graphics.
 
-My research interests lie in **Inverse Rendering**, **Physically-Based Rendering**, and **Neural Material Representation**.
+My research interests lie in **Inverse Rendering**, **Physically-Based Rendering**, and **,Neural Material Representation**.
 
 Professional Experience
 ---
@@ -25,7 +25,7 @@ Professional Experience
 *Research Engineer*<span style="float:right;">Dec 2020 - Present</span>
 
 **Machine Intelligence Lab, CAU**  
-*Research Assistant*<span style="float:right;">Mar 2018 - Aug 2020</span>
+*Research Assistant*<span style="float:right;">Mar 2018 - Aug 2020</span>  
 *Research Intern*<span style="float:right;">Jul 2017 - Feb 2018</span>
 
 Publications
