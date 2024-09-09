@@ -47,7 +47,7 @@ Jinhyeong has aimed his career to leveraging neural networks to enhance and dive
 > ***Keyword:*** General-Purpose Representation, Vector Search, Elasticsearch, 3D Assets, SFX  
 > Designed and implemented a semantic search system to enhance the retrieval of game resources, including 3D assets and SFX, using similarity-based search powered by self-supervised learning  
 
-[![PnP_Lip_Sync](/images/PnP/PnP_Lip_Sync.png)](https://youtu.be/VZ4Cizmscx0)
+[![PnP_Lip_Sync](/images/PnP/PnP_Lip_Sync.png)](https://youtu.be/wWbUHOxdMyI)
 > **Development of Facial Animation Pipeline for Lip Sync and Emotion**  
 > ***Neowiz***, August 2022 - October 2022  
 > ***Keyword:*** Facial Animation, Sentiment Analysis, Deep Learning, Production Design Support Tool (Blender)  
