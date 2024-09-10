@@ -12,8 +12,8 @@ author_profile: true
 * [Publications](#publications)
 
 ## Biography
-Jinhyeong Park is currently working as an AI research engineer at Neowiz, South Korea. He received his master's degree in Computer Science and Engineering at Chung-Ang University, and his masters works were focused on machine learning.
-Jinhyeong has aimed his career to leveraging neural networks to enhance and diversify the aspects of game development. Jinhyeong’s professional experience includes working at a leading game company, where he applied data-driven approaches to improve the efficiency and quality of tasks involving 3D assets, sound, and game contents. By integrating advanced neural network techniques, he automated processes, optimized resource retrieval, and created more realistic and engaging visual and audio experiences in games.
+Jin-Hyeong Park is currently working as an AI research engineer at Neowiz, South Korea. He received his master's degree in Computer Science and Engineering at Chung-Ang University, and his masters works were focused on machine learning.
+Jin has aimed his career to leveraging neural networks to enhance and diversify the aspects of game development. Jin’s professional experience includes working at a leading game company, where he applied data-driven approaches to improve the efficiency and quality of tasks involving 3D assets, sound, and game contents. By integrating advanced neural network techniques, he automated processes, optimized resource retrieval, and created more realistic and engaging visual and audio experiences in games.
 
 <p align="left">
     <img src="/images/PnP/PnP_Rabbit.png" alt="Description" style="float:left; margin-right:10px; width:260px;" />

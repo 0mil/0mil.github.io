@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Jin (Hyeong) Park"
+title: "Jin-Hyeong Park"
 author_profile: true
 redirect_from: 
   - /about/
