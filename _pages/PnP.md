@@ -21,7 +21,8 @@ Jin has aimed his career to leveraging neural networks to enhance and diversify 
 </p>
 
 ## Research Projects
-![PnP_Lip_Sync](/images/PnP/Pnp_Hair_Modeling.png)
+<img src="/images/PnP/Pnp_Hair_Modeling.png" alt="Description" style="width:700px; height:auto;" />
+
 > **Automated Hair Guide Model Generation for Game Characters from 3D Reconstruction**  
 > ***Neowiz****, Apr 2024 - Present*  
 > ***Keyword:*** 3D Content Generation, Inverse Rendering, Geometry Processing  
@@ -62,7 +63,8 @@ Jin has aimed his career to leveraging neural networks to enhance and diversify 
 > The output was utilized as SFX in AAA games, contributing to game awards at the 2023 Apple App Store and NYX Game Awards  
 > [[video]](https://youtu.be/QqUCyK8s5wA)  
 
-![PnP_Medical_Image](/images/PnP/PnP_Medical_Image.png)
+<img src="/images/PnP/PnP_Medical_Image.png" alt="Description" style="width:700px; height:auto;" />
+
 > **Development of Computer based Three-Dimensional Medical Image Analysis Program for the Objective Assessment of Orbital Disease**  
 > ***Neowiz***,  Sep 2018 - Oct 2019  
 > ***Keyword:*** 3D Medical Image(CT), XAI, Deep Learning  
@@ -70,11 +72,13 @@ Jin has aimed his career to leveraging neural networks to enhance and diversify 
 
 ## Personal Computer Graphics Experience
 <img src="/images/PnP/PnP_RayTracingOneWeek.png" alt="Description" style="width:700px; height:auto;" />
+
 > **Ray Tracing Implementation**  
 > Implemented a basic ray tracing engine from scratch following the concepts in "Ray Tracing in One Weekend" Series.  
 > [[video]]()
 
 <img src="/images/PnP/PnP_volume_rendering.png" alt="Description" style="width:700px; height:auto;" />
+
 > **Computer Grpahics with DirectX 11**
 > Implemented various computer graphics concepts using DirectX 11, gaining experience in Physically-Based Rendering, Compute Shaders, Particle Animation, Phong Shading, and Geometry Processing.  
 > [[video]]()
