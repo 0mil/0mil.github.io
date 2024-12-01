@@ -72,12 +72,11 @@ Jin has aimed his career to leveraging neural networks to enhance and diversify 
 
 > **Ray Tracing Implementation**  
 > Implemented a basic ray tracing engine from scratch following the concepts in "Ray Tracing in One Weekend" Series.
-
-> **NeRF Implementation and Key Research Review**  
-> Reviewed key research papers on NeRF, summarizing the core techniques and advancements, to deepen understanding of 3D scene reconstruction and rendering methods. 
+> [[video]]()
 
 > **Computer Grpahics with DirectX 11**  
-> Implemented various computer graphics concepts using DirectX 11, gaining experience in Physically-Based Rendering, Compute Shaders, Particle Animation, Phong Shading, and Geometry Processing.
+> Implemented various computer graphics concepts using DirectX 11, gaining experience in Physically-Based Rendering, Compute Shaders, Particle Animation, Phong Shading, and Geometry Processing.  
+> [[video]]()
 
 
 ## Publications
