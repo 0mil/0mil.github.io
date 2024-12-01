@@ -69,13 +69,12 @@ Jin has aimed his career to leveraging neural networks to enhance and diversify 
 > Explored the classification of thyroid orbitopathy in medical CT images using 3D Convolution-base Neural Networks  
 
 ## Personal Computer Graphics Experience
-
-![PnP_RayTracingOneWeek](/images/PnP/PnP_RayTracingOneWeek.png)
+<img src="/images/PnP/PnP_RayTracingOneWeek.png" alt="Description" style="width:700px; height:auto;" />
 > **Ray Tracing Implementation**  
 > Implemented a basic ray tracing engine from scratch following the concepts in "Ray Tracing in One Weekend" Series.  
 > [[video]]()
 
-![PnP_volume_rendering](/images/PnP/PnP_volume_rendering.png)  
+<img src="/images/PnP/PnP_volume_rendering.png" alt="Description" style="width:700px; height:auto;" />
 > **Computer Grpahics with DirectX 11**
 > Implemented various computer graphics concepts using DirectX 11, gaining experience in Physically-Based Rendering, Compute Shaders, Particle Animation, Phong Shading, and Geometry Processing.  
 > [[video]]()
