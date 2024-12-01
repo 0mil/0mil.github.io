@@ -70,11 +70,13 @@ Jin has aimed his career to leveraging neural networks to enhance and diversify 
 
 ## Personal Computer Graphics Experience
 
+![PnP_RayTracingOneWeek](/images/PnP/PnP_RayTracingOneWeek.png)
 > **Ray Tracing Implementation**  
-> Implemented a basic ray tracing engine from scratch following the concepts in "Ray Tracing in One Weekend" Series.
+> Implemented a basic ray tracing engine from scratch following the concepts in "Ray Tracing in One Weekend" Series.  
 > [[video]]()
 
-> **Computer Grpahics with DirectX 11**  
+![PnP_volume_rendering](/images/PnP/PnP_volume_rendering.png)  
+> **Computer Grpahics with DirectX 11**
 > Implemented various computer graphics concepts using DirectX 11, gaining experience in Physically-Based Rendering, Compute Shaders, Particle Animation, Phong Shading, and Geometry Processing.  
 > [[video]]()
 
