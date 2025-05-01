@@ -8,7 +8,7 @@ author_profile: true
 ## Contents
 * [Biography](#biography)
 * [Research Projects](#research-projects)
-* [Personal Computer Graphics Experience](#personal-computer-graphics-experience)
+* [Independent Projects](#independent-projects)
 * [Publications](#publications)
 
 ## Biography
@@ -20,67 +20,61 @@ Jin has aimed his career to leveraging neural networks to enhance and diversify 
     He is eager to delve deeper into the field of computer graphics, with a specific focus on using neural approaches to find sophisticated representations for visual appearance. The goal is to explore innovative solutions to capture and render intricate visual details, enhancing the realism and immersion of digital media. By advancing the state-of-the-art in neural network applications for computer graphics, he aims to contribute to the creation of immersive and stunning visual experiences in the digital media industries. Going through emerging technologies, he is wholeheartedly committed to driving innovation and shaping the future of computer graphics.
 </p>
 
+
+
+
 ## Research Projects
+
+> **Enhanced Game Image Generation AI Service Development and Feature Integration**  
+> ***Neowiz****, Jan 2024 - Present     
+> ***Keyword:*** `Image processing`, `Diffusion Models`, `Game Art Generation`, `HCI`    
+> Developed Stable Diffusion-based features for concept art generation, style transfer, and background variation, enhancing the game artwork production workflow  
+
+
 <img src="/images/PnP/Pnp_Hair_Modeling.png" alt="Description" style="width:700px; height:auto;" />
 
 > **Automated Hair Guide Model Generation for Game Characters from 3D Reconstruction**  
-> ***Neowiz****, Apr 2024 - Present*  
-> ***Keyword:*** 3D Content Generation, Inverse Rendering, Geometry Processing  
+> ***Neowiz****, Apr 2024 - Nov 2024  
+> ***Keyword:*** `3D Content Generation`, `Geometry Processing`, `Inverse Rendering`  
 > Designed a hair guide model generation pipeline to optimize the creation of game hair models, utilizing Geometry Processing techniques including clustering, importance sampling, and resampling
 
-> **Enhanced Game Image Generation AI Service Development and Feature Integration**  
-> ***Neowiz****, Jan 2024 - Present*  
-> ***Keyword:*** Stable Diffusion-based Image Generation, Human-Computer Interaction 
-> Developed and enhanced the AI service for game artwork by integrating features including concept art generation from sketches, specific art style application, and diverse background variations from prompts
-
 > **Preliminary Research on Motion In-Betweening for 3D Character Animation**  
-> ***Neowiz****, September 2023 - Present*  
-> ***Keyword:*** 3D Animation, Conditional Motion Generation, Deep Learning, Data-driven Approach  
+> ***Neowiz****, September 2023 - Dec 2023    
+> ***Keyword:*** `3D Animation Interpolation`, `Neural Network-based Prediction`, `Unreal Engine`    
 > This project explores real-time interpolated motion generation for AAA game animations using Unreal Engine, aiming to enhance efficiency and interactivity
-
-> **Quality Control in Rhythm Games through Automated Difficulty Level Evaluation**  
-> ***Neowiz****, January 2023 - Present*  
-> ***Keyword:*** Deep Learning, Regression Analysis, Active Learning, Content Design Support Tool  
-> Developed an automation model for difficulty level evaluations in rhythm games (DJMAX) using deep learning techniques, achieving a 30% reduction in time costs for the quality control process  
-
-> **Semantic Search System Development for Effective Game Resource Retrieval**  
-> ***Neowiz***, November 2022 - December 2023  
-> ***Keyword:*** General-Purpose Representation, Vector Search, Elasticsearch, 3D Assets, SFX  
-> Designed and implemented a semantic search system to enhance the retrieval of game resources, including 3D assets and SFX, using similarity-based search powered by self-supervised learning  
 
 [![PnP_Lip_Sync](/images/PnP/PnP_Lip_Sync.png)](https://youtu.be/wWbUHOxdMyI)
 > **Development of Facial Animation Pipeline for Lip Sync and Emotion**  
 > ***Neowiz***, August 2022 - October 2022  
-> ***Keyword:*** Facial Animation, Sentiment Analysis, Deep Learning, Production Design Support Tool (Blender)  
+> ***Keyword:*** `Signal Processing`, `Multivariate Prediction`, `Sentiment Analysis`    
 > Designed and implemented an automated pipeline for facial animations in cartoon-style games, utilizing script-based sentiment analysis and speech-to-viseme models to automate facial expression generation  
 > [[video]](https://youtu.be/VZ4Cizmscx0) 
 
 [![PnP_Neural_Filter](/images/PnP/PnP_Neural_Filter.png)](https://youtu.be/QqUCyK8s5wA)
 > **Neural Audio Filter for Transforming Monster Voices into Machinery Sounds**  
 > ***Neowiz***, June 2021 - October 2022  
-> ***Keyword:*** Digital Signal Processing, Audio Style Transfer, GANs, Audio Super-Resolution  
-> Researched style domain transfer to convert monster voices into machinery monster voices, retaining original nuances  
-> The output was utilized as SFX in AAA games, contributing to game awards at the 2023 Apple App Store and NYX Game Awards  
+> ***Keyword:*** `Neural Representation`, `Signal Processing`, `GAN-based Style Transfer``    
+> Conducted GAN-based domain transfer to convert monster voices into mechanical sounds; applied in the AAA game Lies of P (Apple Game of the Year 2023)    
 > [[video]](https://youtu.be/QqUCyK8s5wA)  
 
 <img src="/images/PnP/PnP_Medical_Image.png" alt="Description" style="width:700px; height:auto;" />
 
 > **Development of Computer based Three-Dimensional Medical Image Analysis Program for the Objective Assessment of Orbital Disease**  
 > ***Neowiz***,  Sep 2018 - Oct 2019  
-> ***Keyword:*** 3D Medical Image(CT), XAI, Deep Learning  
-> Explored the classification of thyroid orbitopathy in medical CT images using 3D Convolution-base Neural Networks  
+> ***Keyword:*** `3D Medical Image(CT)`, `Multi-class Classification`  
+> Conducted 3D volumetric data classification using 3D convolutional neural networks, achieving high accuracy in multi-class prediction tasks    
 
-## Personal Computer Graphics Experience
+## Independent Projects
 <img src="/images/PnP/PnP_RayTracingOneWeek.png" alt="Description" style="width:700px; height:auto;" />
 
 > **Ray Tracing Implementation**  
-> Implemented a basic ray tracing engine from scratch following the concepts in "Ray Tracing in One Weekend" Series.  
+> Built a basic ray tracing engine implementing shading, reflection, and camera control, following the "Ray Tracing in One Weekend" series    
 > [video]
 
 <img src="/images/PnP/PnP_volume_rendering.png" alt="Description" style="width:700px; height:auto;" />
 
-> **Computer Grpahics with DirectX 11**
-> Implemented various computer graphics concepts using DirectX 11, gaining experience in Physically-Based Rendering, Compute Shaders, Particle Animation, Phong Shading, and Geometry Processing.  
+> **DirectX 11 Graphics Projects**   
+> Implemented physically-based rendering, compute shaders, particle animations, and geometry processing using DirectX 11    
 > [video]
 
 
