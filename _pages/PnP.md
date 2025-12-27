@@ -12,14 +12,9 @@ author_profile: true
 * [Publications](#publications)
 
 ## Biography
-Jin-Hyeong Park is currently working as an AI research engineer at Neowiz, South Korea. He received his master's degree in Computer Science and Engineering at Chung-Ang University, and his masters works were focused on machine learning.
-Jin has aimed his career to leveraging neural networks to enhance and diversify the aspects of game development. Jin’s professional experience includes working at a leading game company, where he applied data-driven approaches to improve the efficiency and quality of tasks involving 3D assets, sound, and game contents. By integrating advanced neural network techniques, he automated processes, optimized resource retrieval, and created more realistic and engaging visual and audio experiences in games.
+Jin-Hyeong Park is an AI research engineer and aspiring PhD researcher working on physically informed, controllable visual representations. After training in machine learning (M.S., Chung-Ang University), he worked at Neowiz building deployable visual AI systems in game production, where collaboration with artists shifted his focus from metric-driven models to methods creators can control and trust.
 
-<p align="left">
-    <img src="/images/PnP/PnP_Rabbit.png" alt="Description" style="float:left; margin-right:10px; width:260px;" />
-    He is eager to delve deeper into the field of computer graphics, with a specific focus on using neural approaches to find sophisticated representations for visual appearance. The goal is to explore innovative solutions to capture and render intricate visual details, enhancing the realism and immersion of digital media. By advancing the state-of-the-art in neural network applications for computer graphics, he aims to contribute to the creation of immersive and stunning visual experiences in the digital media industries. Going through emerging technologies, he is wholeheartedly committed to driving innovation and shaping the future of computer graphics.
-</p>
-
+His projects include diffusion-based image generation tools used across multiple game titles and geometry processing for 3D assets. He is currently exploring physically informed editing using intrinsic and geometric cues to improve appearance consistency, with the long-term goal of advancing inverse rendering and neural scene representations for reliable reconstruction, rendering, and editing.
 
 
 

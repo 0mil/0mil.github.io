@@ -6,18 +6,17 @@ redirect_from:
   - /about/
   - /about.html
 ---
-*Researcher at Neowiz,*  
+*Research Engineer at Neowiz,*  
 *M.S at Chung-Ang University in Korean.*
 
 About
 ---
-I am currently an Research Engineer at [Neowiz](https://www.neowiz.com/), a leading company in South Korea known for developing AAA games.
+I work on learning-based visual representations with an emphasis on physical structure and controllability. 
+My interest lies in how neural models can be guided by physically meaningful priors—such as geometry, materials, and intrinsic image structure—to support reliable reconstruction, rendering, and editing of visual content.
 
-I received my master's degree in Computer Science from Chung-Ang University in Korea, where I had the opportunity to work in Professor [Jaesung Lee](https://scholar.google.co.kr/citations?user=WgfyWHkAAAAJ&hl=ko)'s [AutoML Lab](http://ml.cau.ac.kr/). During my time there, I gained extensive experience in applying machine learning across a variety of fields including 3D medical imaging, audio signal processing, and humanities research.
+I am currently a Research Engineer at Neowiz, where I have built deployable AI systems for game content creation and collaborated closely with artists in real production pipelines. These experiences shifted my focus from purely metric-driven modeling toward representations that can be controlled, trusted, and integrated into real workflows. 
 
-Following my graduation, I was fortunate enough to serve my military duty as a Technical Research Personnel in the industry. This allowed me to work at Neowiz, where I engaged in projects integrating AI into game content creation, including 3D character animation, SFX(Sound Effects), and content QC(Quality Control) for AAA games. These invaluable experiences in the gaming industry have deeply fueled my passion for the field of computer graphics.
-
-My research interests lie in **Neural Rendering**, **Neural Material Representation**, and **Inverse Rendering**.
+My research interests lie in ***Learning-based Inverse Rendering, Neural Scene Representations, Controllable 3D Reconstruction and Editing.***
 
 Professional Experience
 ---

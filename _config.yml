@@ -11,7 +11,7 @@ locale                   : "en-US"
 title                    : "Jin Park"
 title_separator          : "-"
 name                     : &name "Jin Park"
-description              : &description "Research Scientist at Neowiz, M.S at CAU"
+description              : &description "Research Engineer at Neowiz, M.S at CAU"
 url                      : https://0mil.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "0mil/0mil.github.io"
@@ -21,10 +21,10 @@ repository               : "0mil/0mil.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.jpg"
+  avatar           : "profile.png"
   name             : #"Your Sidebar Name"
   pronouns         : # example: "she/her"  
-  bio              : "Research Scientist at Neowiz, M.S at CAU"
+  bio              : "Research Engineer at Neowiz, M.S at CAU"
   location         : "Seoul, Republic of Korea"
   employer         : #"Red Brick University"
   uri              : # URL
