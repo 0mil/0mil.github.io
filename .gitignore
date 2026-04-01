@@ -6,3 +6,10 @@ video/
 Gemfile.lock
 unload.md
 run.bat
+
+# Local macOS metadata
+.DS_Store
+
+# Internal migration notes / scratch assets
+report.md
+v2_template/

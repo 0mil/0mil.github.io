@@ -1,0 +1,364 @@
+body {
+  background: #ffffff;
+  color: #222;
+}
+
+code {
+  color: #8f2d18;
+  background: rgba(143, 45, 24, 0.06);
+  border-radius: 4px;
+  padding: 0.08rem 0.3rem;
+}
+
+.navbar {
+  border-bottom: 1px solid #ececec;
+}
+
+.navbar-item,
+.navbar-link {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-header .hero-body {
+  padding-bottom: 2rem;
+}
+
+.publication-title {
+  max-width: 980px;
+  margin: 0 auto 1rem;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.publication-venue {
+  margin: 0 auto 0.75rem;
+}
+
+.publication-links .button.is-dark.is-disabled,
+.publication-links .button.is-dark[aria-disabled="true"] {
+  opacity: 0.46;
+  pointer-events: none;
+}
+
+.button-note {
+  margin-top: 0.65rem;
+  color: #777;
+  font-size: 0.92rem;
+}
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 2.5rem;
+}
+
+.teaser-panels {
+  margin-bottom: 1rem;
+}
+
+.panel-caption {
+  margin-top: 0.65rem;
+  text-align: center;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.teaser-note {
+  margin-top: 0.5rem;
+  color: #666;
+}
+
+.section-soft {
+  background: #fafafa;
+}
+
+.info-card {
+  height: 100%;
+  padding: 1.4rem;
+  border: 1px solid #e8e8e8;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+}
+
+.info-card .title {
+  margin-bottom: 0.7rem;
+}
+
+.media-placeholder {
+  border: 1px solid #dddddd;
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.025), rgba(0, 0, 0, 0)),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(0, 0, 0, 0.035),
+      rgba(0, 0, 0, 0.035) 12px,
+      rgba(255, 255, 255, 0.9) 12px,
+      rgba(255, 255, 255, 0.9) 24px
+    );
+  color: #545454;
+}
+
+.teaser-placeholder,
+.figure-placeholder {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1.6rem;
+}
+
+.figure-wide {
+  min-height: 360px;
+  margin: 1.25rem 0 1.5rem;
+}
+
+.placeholder-kicker {
+  font-family: 'Google Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  color: #8a8a8a;
+  margin-bottom: 0.45rem;
+}
+
+.placeholder-name {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 0.3rem;
+}
+
+.placeholder-file {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.84rem;
+  color: #8f2d18;
+  margin-bottom: 0.55rem;
+  word-break: break-word;
+}
+
+.media-placeholder p {
+  margin-bottom: 0;
+  max-width: 36rem;
+}
+
+.method-columns {
+  margin-top: 0.6rem;
+}
+
+.comparison-block {
+  margin-top: 2rem;
+}
+
+.comparison-header {
+  margin-bottom: 0.85rem;
+}
+
+.comparison-subtitle {
+  color: #666;
+}
+
+.comparison-slider {
+  margin-bottom: 0.75rem;
+}
+
+.comparison-stage {
+  position: relative;
+  height: 360px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #dddddd;
+  background: #f6f6f6;
+  cursor: ew-resize;
+  touch-action: none;
+}
+
+.comparison-side {
+  position: absolute;
+  inset: 0;
+}
+
+.comparison-base {
+  z-index: 1;
+}
+
+.comparison-overlay {
+  z-index: 2;
+  width: 50%;
+  overflow: hidden;
+}
+
+.comparison-inner {
+  width: 100%;
+  height: 100%;
+}
+
+.comparison-placeholder {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1.6rem;
+}
+
+.comparison-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.comparison-divider::after {
+  content: "↔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid #d8d8d8;
+  color: #8f2d18;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comparison-label {
+  position: absolute;
+  top: 0.85rem;
+  z-index: 4;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #e0e0e0;
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.82rem;
+  font-family: 'Google Sans', sans-serif;
+}
+
+.comparison-label-left {
+  left: 0.85rem;
+}
+
+.comparison-label-right {
+  right: 0.85rem;
+}
+
+.comparison-caption {
+  margin-top: 0.8rem;
+  color: #4f4f4f;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.scene-card {
+  border: 1px solid #e8e8e8;
+  border-radius: 18px;
+  padding: 1.15rem;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+}
+
+.scene-card .title {
+  margin-bottom: 0.95rem;
+}
+
+.scene-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.mini-placeholder {
+  min-height: 140px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.mini-placeholder .placeholder-name {
+  font-size: 0.96rem;
+}
+
+.mini-placeholder .placeholder-file {
+  font-size: 0.74rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.quant-table th,
+.quant-table td {
+  vertical-align: middle;
+}
+
+pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media screen and (max-width: 1023px) {
+  .publication-title {
+    font-size: 2.45rem !important;
+  }
+
+  .scene-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .publication-title {
+    font-size: 2rem !important;
+  }
+
+  .teaser-placeholder,
+  .figure-placeholder,
+  .comparison-stage {
+    min-height: 240px;
+    height: 240px;
+  }
+
+  .comparison-placeholder {
+    padding: 1rem;
+  }
+
+  .scene-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .scene-grid {
+    grid-template-columns: 1fr;
+  }
+}
