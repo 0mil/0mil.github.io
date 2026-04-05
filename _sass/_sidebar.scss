@@ -244,3 +244,19 @@
     }
   }
 }
+
+.author__v2-link {
+  margin: 10px 0 0;
+
+  .btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: $type-size-6;
+    padding: 0.35em 0.7em;
+  }
+
+  @include breakpoint($large) {
+    margin-top: 12px;
+  }
+}
+
