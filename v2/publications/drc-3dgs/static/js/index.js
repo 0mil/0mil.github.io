@@ -20,8 +20,16 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    function syncOverlayWidth() {
+      var overlayInner = overlay.querySelector(".comparison-inner");
+      if (overlayInner) {
+        overlayInner.style.width = stage.getBoundingClientRect().width + "px";
+      }
+    }
+
     function applyValue(value) {
       var safeValue = Math.max(0, Math.min(100, Number(value)));
+      syncOverlayWidth();
       overlay.style.width = safeValue + "%";
       divider.style.left = safeValue + "%";
     }
@@ -56,6 +64,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }, { passive: true });
 
     stage.addEventListener("mouseleave", function () {
+      applyValue(sliderRoot.dataset.initial || 50);
+    });
+
+    window.addEventListener("resize", function () {
+      syncOverlayWidth();
       applyValue(sliderRoot.dataset.initial || 50);
     });
 

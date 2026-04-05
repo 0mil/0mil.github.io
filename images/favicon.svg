@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Jin favicon">
+  <circle cx="32" cy="32" r="32" fill="#ffffff"/>
+  <clipPath id="crop-right">
+    <rect x="0" y="0" width="59" height="64"/>
+  </clipPath>
+  <text x="18" y="42" text-anchor="start"
+        fill="#111111" font-size="43" font-weight="700"
+        font-family="Times New Roman, serif" letter-spacing="-3.4"
+        clip-path="url(#crop-right)">Jin</text>
+</svg>
