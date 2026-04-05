@@ -18,7 +18,7 @@
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="stylesheet" href="./static/css/drc.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="../../../images/favicon.svg">
 
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script defer src="./static/js/bulma-carousel.min.js"></script>
@@ -131,30 +131,27 @@
     <div class="hero-body">
       <div class="columns is-variable is-4 teaser-panels">
         <div class="column">
-          <div class="media-placeholder teaser-placeholder">
-            <div class="placeholder-kicker">Hero Panel 1</div>
-            <div class="placeholder-name">RGB</div>
-            <div class="placeholder-file">./static/images/hero_counter_rgb.jpg</div>
-            <p>Recommended scene: counter, room, or toaster.</p>
-          </div>
+          <figure class="media-frame teaser-media-frame">
+            <img src="./static/images/fig2/dscf5859_original_A_tight.png"
+                 alt="Observed target RGB image for the hero teaser panel."
+                 class="media-image">
+          </figure>
           <p class="panel-caption">Observed target image.</p>
         </div>
         <div class="column">
-          <div class="media-placeholder teaser-placeholder">
-            <div class="placeholder-kicker">Hero Panel 2</div>
-            <div class="placeholder-name">Baseline Single-Map</div>
-            <div class="placeholder-file">./static/images/hero_counter_efull.jpg</div>
-            <p>Use <code>E_full</code> to show ambiguity in a single reprojection signal.</p>
-          </div>
+          <figure class="media-frame teaser-media-frame">
+            <img src="./static/images/fig2/dscf5859_Ef_n_A_tight.png"
+                 alt="Baseline single-map inconsistency visualization for the hero teaser panel."
+                 class="media-image">
+          </figure>
           <p class="panel-caption">Ambiguous diagnosis from a single inconsistency map.</p>
         </div>
         <div class="column">
-          <div class="media-placeholder teaser-placeholder">
-            <div class="placeholder-kicker">Hero Panel 3</div>
-            <div class="placeholder-name">DRC Triage</div>
-            <div class="placeholder-file">./static/images/hero_counter_overlay.jpg</div>
-            <p>Prefer quadrant overlay; use <code>E_vd</code> only if it reads more clearly.</p>
-          </div>
+          <figure class="media-frame teaser-media-frame">
+            <img src="./static/images/fig2/dscf5859_quadrants_A_tight.png"
+                 alt="DRC quadrant triage visualization for the hero teaser panel."
+                 class="media-image">
+          </figure>
           <p class="panel-caption">Decoupled diagnosis with interpretable per-pixel triage.</p>
         </div>
       </div>
@@ -236,12 +233,11 @@
             small family of internal diagnostics.
           </p>
         </div>
-        <div class="media-placeholder figure-placeholder figure-wide">
-          <div class="placeholder-kicker">Pipeline Figure</div>
-          <div class="placeholder-name">Main Diagnostic Pipeline</div>
-          <div class="placeholder-file">./static/images/fig_pipeline.jpg</div>
-          <p>Use the main figure from the poster or supplementary. This is the primary method block.</p>
-        </div>
+        <figure class="figure-wide figure-plain">
+          <img src="./static/images/drc_fig1.png"
+               alt="Main diagnostic pipeline figure"
+               class="media-image">
+        </figure>
         <div class="columns is-variable is-5 method-columns">
           <div class="column">
             <div class="content">
@@ -291,82 +287,129 @@
             Hover or drag across each figure to compare two views of the same scene.
           </p>
         </div>
+        <div class="comparison-grid comparison-grid-two-up">
+          <div class="comparison-block comparison-block-compact">
+            <div class="comparison-header">
+              <div>
+                <h3 class="title is-4">Counter</h3>
+                <p class="comparison-subtitle">RGB vs quadrant overlay</p>
+              </div>
+            </div>
+            <div class="comparison-slider" data-initial="54">
+              <div class="comparison-stage">
+                <div class="comparison-side comparison-base">
+                  <div class="comparison-label comparison-label-left">Quadrant overlay</div>
+                  <div class="comparison-inner">
+                    <img src="./static/images/fig2/dscf5859_quadrants_A_tight.png"
+                         alt="Counter quadrant overlay comparison image."
+                         class="comparison-media">
+                  </div>
+                </div>
+                <div class="comparison-side comparison-overlay">
+                  <div class="comparison-label comparison-label-right">RGB</div>
+                  <div class="comparison-inner">
+                    <img src="./static/images/fig2/dscf5859_original_A_tight.png"
+                         alt="Counter RGB comparison image."
+                         class="comparison-media">
+                  </div>
+                </div>
+                <div class="comparison-divider"></div>
+              </div>
+            </div>
+          </div>
 
-        <div class="comparison-block">
-          <div class="comparison-header">
-            <div>
-              <h3 class="title is-4">Counter</h3>
-              <p class="comparison-subtitle">RGB vs quadrant overlay</p>
+          <div class="comparison-block comparison-block-compact">
+            <div class="comparison-header">
+              <div>
+                <h3 class="title is-4">Counter</h3>
+                <p class="comparison-subtitle"><code>E_full</code> vs <code>E_vd</code></p>
+              </div>
             </div>
-          </div>
-          <div class="comparison-slider" data-initial="54">
-            <div class="comparison-stage">
-              <div class="comparison-side comparison-base">
-                <div class="comparison-label comparison-label-left">RGB</div>
-                <div class="comparison-inner">
-                  <div class="media-placeholder comparison-placeholder">
-                    <div class="placeholder-name">RGB</div>
-                    <div class="placeholder-file">./static/images/slider_counter_left.jpg</div>
-                    <p>Recommended: target RGB image from Counter.</p>
+            <div class="comparison-slider" data-initial="48">
+              <div class="comparison-stage">
+                <div class="comparison-side comparison-base">
+                  <div class="comparison-label comparison-label-left"><code>E_vd</code></div>
+                  <div class="comparison-inner">
+                    <img src="./static/images/fig2/dscf5859_Evd_n_A_tight.png"
+                         alt="Counter E_vd comparison image."
+                         class="comparison-media">
                   </div>
                 </div>
-              </div>
-              <div class="comparison-side comparison-overlay">
-                <div class="comparison-label comparison-label-right">Quadrant overlay</div>
-                <div class="comparison-inner">
-                  <div class="media-placeholder comparison-placeholder">
-                    <div class="placeholder-name">Quadrant Overlay</div>
-                    <div class="placeholder-file">./static/images/slider_counter_right.jpg</div>
-                    <p>Recommended: same crop with DRC quadrant overlay.</p>
+                <div class="comparison-side comparison-overlay">
+                  <div class="comparison-label comparison-label-right"><code>E_full</code></div>
+                  <div class="comparison-inner">
+                    <img src="./static/images/fig2/dscf5859_Ef_n_A_tight.png"
+                         alt="Counter E_full comparison image."
+                         class="comparison-media">
                   </div>
                 </div>
+                <div class="comparison-divider"></div>
               </div>
-              <div class="comparison-divider"></div>
             </div>
           </div>
-          <p class="comparison-caption">
-            This pairing makes the triage readable in image space: the overlay shows where the
-            ambiguous visual region should be interpreted as geometry-like or appearance-driven.
-          </p>
         </div>
+        <div class="comparison-grid comparison-grid-two-up">
+          <div class="comparison-block comparison-block-compact">
+            <div class="comparison-header">
+              <div>
+                <h3 class="title is-4">Toaster</h3>
+                <p class="comparison-subtitle">RGB vs quadrant overlay</p>
+              </div>
+            </div>
+            <div class="comparison-slider" data-initial="54">
+              <div class="comparison-stage">
+                <div class="comparison-side comparison-base">
+                  <div class="comparison-label comparison-label-left">Quadrant overlay</div>
+                  <div class="comparison-inner">
+                    <img src="./static/images/fig2/r_97_quadrants_raw.png"
+                         alt="Toaster quadrant overlay comparison image."
+                         class="comparison-media">
+                  </div>
+                </div>
+                <div class="comparison-side comparison-overlay">
+                  <div class="comparison-label comparison-label-right">RGB</div>
+                  <div class="comparison-inner">
+                    <img src="./static/images/fig2/r_97_original_raw.png"
+                         alt="Toaster RGB comparison image."
+                         class="comparison-media">
+                  </div>
+                </div>
+                <div class="comparison-divider"></div>
+              </div>
+            </div>
+          </div>
 
-        <div class="comparison-block">
-          <div class="comparison-header">
-            <div>
-              <h3 class="title is-4">Toaster</h3>
-              <p class="comparison-subtitle"><code>E_full</code> vs <code>E_vd</code></p>
+          <div class="comparison-block comparison-block-compact">
+            <div class="comparison-header">
+              <div>
+                <h3 class="title is-4">Toaster</h3>
+                <p class="comparison-subtitle"><code>E_full</code> vs <code>E_vd</code></p>
+              </div>
             </div>
-          </div>
-          <div class="comparison-slider" data-initial="48">
-            <div class="comparison-stage">
-              <div class="comparison-side comparison-base">
-                <div class="comparison-label comparison-label-left"><code>E_full</code></div>
-                <div class="comparison-inner">
-                  <div class="media-placeholder comparison-placeholder">
-                    <div class="placeholder-name"><code>E_full</code></div>
-                    <div class="placeholder-file">./static/images/slider_toaster_left.jpg</div>
-                    <p>Recommended: toaster single-map inconsistency.</p>
+            <div class="comparison-slider" data-initial="48">
+              <div class="comparison-stage">
+                <div class="comparison-side comparison-base">
+                  <div class="comparison-label comparison-label-left"><code>E_vd</code></div>
+                  <div class="comparison-inner">
+                    <img src="./static/images/fig2/r_97_Evd_n_raw.png"
+                         alt="Toaster E_vd comparison image."
+                         class="comparison-media">
                   </div>
                 </div>
-              </div>
-              <div class="comparison-side comparison-overlay">
-                <div class="comparison-label comparison-label-right"><code>E_vd</code></div>
-                <div class="comparison-inner">
-                  <div class="media-placeholder comparison-placeholder">
-                    <div class="placeholder-name"><code>E_vd</code></div>
-                    <div class="placeholder-file">./static/images/slider_toaster_right.jpg</div>
-                    <p>Recommended: toaster residual map on the same crop.</p>
+                <div class="comparison-side comparison-overlay">
+                  <div class="comparison-label comparison-label-right"><code>E_full</code></div>
+                  <div class="comparison-inner">
+                    <img src="./static/images/fig2/r_97_Ef_n_raw.png"
+                         alt="Toaster E_full comparison image."
+                         class="comparison-media">
                   </div>
                 </div>
+                <div class="comparison-divider"></div>
               </div>
-              <div class="comparison-divider"></div>
             </div>
           </div>
-          <p class="comparison-caption">
-            This view highlights what the single-map diagnostic cannot separate on its own: the
-            residual isolates where view-dependent behavior grows beyond the base inconsistency.
-          </p>
         </div>
+        <p class="comparison-caption comparison-group-caption">RGB vs quadrant overlay compares the observed image with DRC spatial triage in image space. <code>E_full</code> vs <code>E_vd</code> contrasts the ambiguous single-map inconsistency against the view-dependent residual.</p>
       </div>
     </div>
   </div>
@@ -387,44 +430,44 @@
           <article class="scene-card">
             <h3 class="title is-5">Counter</h3>
             <div class="scene-grid">
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name">RGB</div><div class="placeholder-file">./static/images/gallery_counter_rgb.jpg</div></div>
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name"><code>E_full</code></div><div class="placeholder-file">./static/images/gallery_counter_efull.jpg</div></div>
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name"><code>E_base</code></div><div class="placeholder-file">./static/images/gallery_counter_ebase.jpg</div></div>
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name"><code>E_vd</code></div><div class="placeholder-file">./static/images/gallery_counter_evd.jpg</div></div>
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name">Overlay</div><div class="placeholder-file">./static/images/gallery_counter_overlay.jpg</div></div>
+              <figure class="scene-media-card"><img src="./static/images/fig2/dscf5859_original_A_tight.png" alt="Counter RGB result image." class="scene-media-image"><figcaption class="scene-media-label">RGB</figcaption></figure>
+              <figure class="scene-media-card"><img src="./static/images/fig2/dscf5859_Ef_n_A_tight.png" alt="Counter E_full result image." class="scene-media-image"><figcaption class="scene-media-label"><code>E_full</code></figcaption></figure>
+              <figure class="scene-media-card"><img src="./static/images/fig2/dscf5859_Eb_n_A_tight.png" alt="Counter E_base result image." class="scene-media-image"><figcaption class="scene-media-label"><code>E_base</code></figcaption></figure>
+              <figure class="scene-media-card"><img src="./static/images/fig2/dscf5859_Evd_n_A_tight.png" alt="Counter E_vd result image." class="scene-media-image"><figcaption class="scene-media-label"><code>E_vd</code></figcaption></figure>
+              <figure class="scene-media-card"><img src="./static/images/fig2/dscf5859_quadrants_A_tight.png" alt="Counter quadrant overlay result image." class="scene-media-image"><figcaption class="scene-media-label">Overlay</figcaption></figure>
             </div>
           </article>
 
           <article class="scene-card">
             <h3 class="title is-5">Room</h3>
             <div class="scene-grid">
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name">RGB</div><div class="placeholder-file">./static/images/gallery_room_rgb.jpg</div></div>
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name"><code>E_full</code></div><div class="placeholder-file">./static/images/gallery_room_efull.jpg</div></div>
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name"><code>E_base</code></div><div class="placeholder-file">./static/images/gallery_room_ebase.jpg</div></div>
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name"><code>E_vd</code></div><div class="placeholder-file">./static/images/gallery_room_evd.jpg</div></div>
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name">Overlay</div><div class="placeholder-file">./static/images/gallery_room_overlay.jpg</div></div>
+              <figure class="scene-media-card"><img src="./static/images/fig2/frame_00009_original_main.png" alt="Room RGB result image." class="scene-media-image"><figcaption class="scene-media-label">RGB</figcaption></figure>
+              <figure class="scene-media-card"><img src="./static/images/fig2/frame_00009_Ef_n_main.png" alt="Room E_full result image." class="scene-media-image"><figcaption class="scene-media-label"><code>E_full</code></figcaption></figure>
+              <figure class="scene-media-card"><img src="./static/images/fig2/frame_00009_Eb_n_main.png" alt="Room E_base result image." class="scene-media-image"><figcaption class="scene-media-label"><code>E_base</code></figcaption></figure>
+              <figure class="scene-media-card"><img src="./static/images/fig2/frame_00009_Evd_n_main.png" alt="Room E_vd result image." class="scene-media-image"><figcaption class="scene-media-label"><code>E_vd</code></figcaption></figure>
+              <figure class="scene-media-card"><img src="./static/images/fig2/frame_00009_quadrants_main.png" alt="Room quadrant overlay result image." class="scene-media-image"><figcaption class="scene-media-label">Overlay</figcaption></figure>
             </div>
           </article>
 
           <article class="scene-card">
             <h3 class="title is-5">Toaster</h3>
             <div class="scene-grid">
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name">RGB</div><div class="placeholder-file">./static/images/gallery_toaster_rgb.jpg</div></div>
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name"><code>E_full</code></div><div class="placeholder-file">./static/images/gallery_toaster_efull.jpg</div></div>
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name"><code>E_base</code></div><div class="placeholder-file">./static/images/gallery_toaster_ebase.jpg</div></div>
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name"><code>E_vd</code></div><div class="placeholder-file">./static/images/gallery_toaster_evd.jpg</div></div>
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name">Overlay</div><div class="placeholder-file">./static/images/gallery_toaster_overlay.jpg</div></div>
+              <figure class="scene-media-card"><img src="./static/images/fig2/r_97_original_raw.png" alt="Toaster RGB result image." class="scene-media-image"><figcaption class="scene-media-label">RGB</figcaption></figure>
+              <figure class="scene-media-card"><img src="./static/images/fig2/r_97_Ef_n_raw.png" alt="Toaster E_full result image." class="scene-media-image"><figcaption class="scene-media-label"><code>E_full</code></figcaption></figure>
+              <figure class="scene-media-card"><img src="./static/images/fig2/r_97_Eb_n_raw.png" alt="Toaster E_base result image." class="scene-media-image"><figcaption class="scene-media-label"><code>E_base</code></figcaption></figure>
+              <figure class="scene-media-card"><img src="./static/images/fig2/r_97_Evd_n_raw.png" alt="Toaster E_vd result image." class="scene-media-image"><figcaption class="scene-media-label"><code>E_vd</code></figcaption></figure>
+              <figure class="scene-media-card"><img src="./static/images/fig2/r_97_quadrants_raw.png" alt="Toaster quadrant overlay result image." class="scene-media-image"><figcaption class="scene-media-label">Overlay</figcaption></figure>
             </div>
           </article>
 
           <article class="scene-card">
             <h3 class="title is-5">Orchids</h3>
             <div class="scene-grid">
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name">RGB</div><div class="placeholder-file">./static/images/gallery_orchids_rgb.jpg</div></div>
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name"><code>E_full</code></div><div class="placeholder-file">./static/images/gallery_orchids_efull.jpg</div></div>
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name"><code>E_base</code></div><div class="placeholder-file">./static/images/gallery_orchids_ebase.jpg</div></div>
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name"><code>E_vd</code></div><div class="placeholder-file">./static/images/gallery_orchids_evd.jpg</div></div>
-              <div class="media-placeholder mini-placeholder"><div class="placeholder-name">Overlay</div><div class="placeholder-file">./static/images/gallery_orchids_overlay.jpg</div></div>
+              <figure class="scene-media-card"><img src="./static/images/fig2/frame_00014_original_raw.png" alt="Orchids RGB result image." class="scene-media-image"><figcaption class="scene-media-label">RGB</figcaption></figure>
+              <figure class="scene-media-card"><img src="./static/images/fig2/frame_00014_Ef_n_raw.png" alt="Orchids E_full result image." class="scene-media-image"><figcaption class="scene-media-label"><code>E_full</code></figcaption></figure>
+              <figure class="scene-media-card"><img src="./static/images/fig2/frame_00014_Eb_n_raw.png" alt="Orchids E_base result image." class="scene-media-image"><figcaption class="scene-media-label"><code>E_base</code></figcaption></figure>
+              <figure class="scene-media-card"><img src="./static/images/fig2/frame_00014_Evd_n_raw.png" alt="Orchids E_vd result image." class="scene-media-image"><figcaption class="scene-media-label"><code>E_vd</code></figcaption></figure>
+              <figure class="scene-media-card"><img src="./static/images/fig2/frame_00014_quadrants_raw.png" alt="Orchids quadrant overlay result image." class="scene-media-image"><figcaption class="scene-media-label">Overlay</figcaption></figure>
             </div>
           </article>
         </div>
@@ -531,13 +574,8 @@
       <div class="column is-8">
         <div class="content">
           <p>
-            This page follows the academic project-page rhythm popularized by the
-            <a href="https://nerfies.github.io/">Nerfies</a> template and has been adapted for a
-            diagnostic 3DGS publication page.
-          </p>
-          <p>
-            Visual placeholders are intentional in this draft so the page structure and wording can
-            be reviewed before final figures are inserted.
+            This project page was built using the <a href="https://nerfies.github.io/">Nerfies</a> template.
+            Many thanks to the authors for making it available.
           </p>
         </div>
       </div>

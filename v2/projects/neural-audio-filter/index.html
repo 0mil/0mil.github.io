@@ -3,22 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Project detail page for automated hair guide model generation from 3D reconstruction by Jin-Hyeong Park.">
-  <title>Hair Guide Model Generation · Jin-Hyeong Park</title>
+  <meta name="description" content="Project detail page for neural audio filtering for stylized creature voice transformation by Jin-Hyeong Park.">
+  <title>Neural Audio Filter for Transforming Monster Voices into Machinery Sounds - Jin-Hyeong Park</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cantarell&family=Playfair+Display+SC:wght@900&family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="../../assets/styles.css">
 </head>
-<body data-theme="dark">
+<body data-theme="light">
   <div class="container page-shell">
     <header class="header">
       <a href="../../" class="logo" aria-label="Back to home">
         <span style="--i:0">P</span><span style="--i:1">r</span><span style="--i:2">o</span><span style="--i:3">j</span><span style="--i:4">e</span><span style="--i:5">c</span><span style="--i:6">t</span>
       </a>
       <div class="header-right">
-        <button class="theme-toggle" data-theme-toggle type="button" aria-label="Toggle theme">Sun</button>
+        <button class="theme-toggle" data-theme-toggle type="button" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon" data-theme-icon aria-hidden="true"></i>
+        </button>
       </div>
     </header>
 
@@ -26,39 +28,28 @@
       <div class="section-header">
         <div class="section-label">Project Page</div>
       </div>
-      <h1 class="page-title">Automated Hair Guide Model Generation for Game Characters from 3D Reconstruction</h1>
+      <h1 class="page-title">Neural Audio Filter for Transforming Monster Voices into Machinery Sounds</h1>
             <div class="page-intro">
-        <p>
-          This detail page keeps the same visual tone and section logic as the main page while giving one project more
-          room for explanation.
-        </p>
+        <p>This project explored neural audio transformation for converting monster-like vocal performances into machine-like sounds suitable for game production.</p>
       </div>
       <div class="page-meta-inline">
         <span><strong>Organization</strong> Neowiz</span>
-        <span><strong>Period</strong> Apr 2024 - Nov 2024</span>
-        <span><strong>Keywords</strong> Geometry processing, 3D content generation, inverse rendering</span>
+        <span><strong>Period</strong> Jun 2021 - Oct 2022</span>
+        <span><strong>Keywords</strong> Neural representation, signal processing, GAN-based style transfer</span>
       </div>
     </section>
 
     <main class="main-content">
       <div class="detail-layout detail-layout-single">
         <div>
-          <img class="detail-hero-image" src="../../../images/PnP/Pnp_Hair_Modeling.png" alt="Hair guide model generation pipeline">
+          <img class="detail-hero-image" src="../../../images/PnP/PnP_Neural_Filter.png" alt="Neural audio filter">
           <section class="section">
             <div class="section-header">
               <div class="section-label">Overview</div>
             </div>
             <div class="detail-copy">
-              <p>
-                This project focused on optimizing the creation of game hair models by generating hair guide structures
-                from reconstructed 3D data. The pipeline combined geometry processing techniques including clustering,
-                importance sampling, and resampling.
-              </p>
-              <p>
-                The work was motivated by practical production needs rather than purely isolated experiments. The goal
-                was to reduce manual overhead in early hair modeling stages while preserving enough structure for
-                downstream artistic control and refinement.
-              </p>
+              <p>The production need was to create convincing mechanical creature voices without relying entirely on handcrafted sound design for every variant. The project framed this as a domain transfer problem between organic vocal inputs and stylized machinery-like outputs.</p>
+              <p>The resulting system used GAN-based style transfer ideas and signal processing considerations to create a practical transformation pipeline. The work was applied in the production context of Lies of P, where consistency, speed, and artistic usability mattered as much as raw novelty.</p>
             </div>
           </section>
         </div>
@@ -67,7 +58,7 @@
   </div>
 
   <footer class="footer">
-    <p><span class="copyright-name">Jin-Hyeong Park</span> · <a href="../../">return to homepage</a></p>
+    <p><span class="copyright-name">Jin-Hyeong Park</span> ? <a href="../../">return to homepage</a></p>
   </footer>
 
   <script src="../../assets/main.js"></script>

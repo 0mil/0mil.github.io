@@ -13,3 +13,6 @@ run.bat
 # Internal migration notes / scratch assets
 report.md
 v2_template/
+.conda-node/
+.tmp-build/
+v2-template/
