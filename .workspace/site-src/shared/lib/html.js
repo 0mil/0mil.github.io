@@ -3,7 +3,7 @@ export function escapeHtml(value) {
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
+    .replace(/\"/g, "&quot;")
     .replace(/'/g, "&#39;")
 }
 
@@ -15,11 +15,18 @@ export function renderTextParts(parts) {
   return parts
     .map((part) => {
       const text = escapeHtml(part.text)
-      if (!part.href) {
-        return text
+      let inner = text
+
+      if (part.strong) {
+        inner = `<strong>${inner}</strong>`
       }
+
+      if (!part.href) {
+        return inner
+      }
+
       const classAttr = part.accent ? ' class="news-link-accent"' : ""
-      return `<a href="${escapeHtml(part.href)}"${classAttr}>${text}</a>`
+      return `<a href="${escapeHtml(part.href)}"${classAttr}>${inner}</a>`
     })
     .join("")
 }

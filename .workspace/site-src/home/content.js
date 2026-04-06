@@ -2,7 +2,14 @@ export const home = {
   introParagraphs: [
     [
       {
-        text: "I am an ML engineer with industry experience in game production and AI-driven content pipelines. My work lies at the intersection of computer graphics and machine learning, with a focus on inverse rendering, neural 3D representations, and neural relighting. I am particularly interested in research collaboration and internship opportunities in computer graphics and vision.",
+        text: "I am an ML engineer with industry experience in game production and AI-driven content pipelines. My work lies at the intersection of computer graphics and machine learning, with a focus on ",
+      },
+      {
+        text: "inverse rendering, neural 3D representations, and neural relighting",
+        strong: true,
+      },
+      {
+        text: ". I am particularly interested in research collaboration and internship opportunities in computer graphics and vision.",
       },
     ],
     [
@@ -84,3 +91,4 @@ export const home = {
   },
   cloudWidgetSrc: "embeds/cloud/index.html",
 }
+
