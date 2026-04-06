@@ -16,3 +16,6 @@ v2_template/
 .conda-node/
 .tmp-build/
 v2-template/
+toys/node_modules/
+toys/build/
+site-dist/
