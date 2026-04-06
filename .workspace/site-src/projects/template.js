@@ -6,7 +6,25 @@ import {
   renderHead,
 } from "../shared/templates/shared.js"
 
+function renderFigures(figures = [], layout = "auto") {
+  if (!figures.length) {
+    return ""
+  }
+
+  const figureClass = layout === "stack" || figures.length === 1 ? "detail-figure-stack" : layout === "asymmetric" ? "detail-figure-grid detail-figure-grid-asymmetric" : "detail-figure-grid"
+  return `<div class="${figureClass}">
+              ${figures
+                .map(
+                  (figure) => `<figure class="detail-figure-card">
+                <img src="${resolvePath("../../", figure.src)}" alt="${escapeHtml(figure.alt)}" class="detail-figure-image">
+              </figure>`
+                )
+                .join("\n              ")}
+            </div>`
+}
+
 function renderSection(section) {
+  const figures = renderFigures(section.figures, section.figureLayout || "auto")
   const paragraphs = (section.paragraphs || [])
     .map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`)
     .join("\n              ")
@@ -28,6 +46,7 @@ function renderSection(section) {
               <div class="section-label">${escapeHtml(section.label)}</div>
             </div>
             <div class="detail-copy">
+              ${figures}
               ${paragraphs}
               ${items}
               ${link}
@@ -92,6 +111,7 @@ export function renderProjectPage({ site, project }) {
               <div class="section-label">Overview</div>
             </div>
             <div class="detail-copy">
+              ${renderFigures(detail.overviewFigures || [])}
               ${detail.overview
                 .map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`)
                 .join("\n              ")}
@@ -122,4 +142,5 @@ export function renderProjectPage({ site, project }) {
     bodyTheme: "light",
   })
 }
+
 

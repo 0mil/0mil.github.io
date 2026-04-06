@@ -111,6 +111,12 @@ export const projects = [
       heroAlt: "Neural audio filter video",
       quote:
         "A neural audio style transfer project for generating machine-like creature voices for Lies of P.",
+      overviewFigures: [
+        {
+          src: "images/projects/neural-audio-filter/overview-figure.png",
+          alt: "Neural audio filter overview figure",
+        },
+      ],
       overview: [
         "This project explored neural audio style transfer for designing mechanical creature voices in the world of Lies of P. The central challenge was that the monsters were intended to sound machine-like rather than organic, yet raw mechanical recordings lacked the timing, force, and expressive motion needed for believable creature performances.",
         "Instead of relying only on conventional sound design techniques such as filtering, layering, and manual editing, I developed a neural audio filter that transformed monster vocal samples into mechanical textures while retaining the original performance cues that made them feel alive.",
@@ -118,6 +124,12 @@ export const projects = [
       sections: [
         {
           label: "Approach",
+          figures: [
+            {
+              src: "images/projects/neural-audio-filter/approach-figure-combined.png",
+              alt: "Neural audio filter approach figure",
+            },
+          ],
           paragraphs: [
             "The system was built on a non-parallel spectrogram-based audio translation framework and adapted for game audio rather than standard voice conversion.",
             "My main focus was not simply transferring texture, but preserving the dynamics and accent structure of the source signal so that the output would still feel like an intentional creature performance rather than a layer of generic machine noise.",
@@ -160,3 +172,5 @@ export const projects = [
     },
   },
 ]
+
+

@@ -1180,3 +1180,35 @@ img {
   margin-bottom: 0.6rem;
   line-height: 1.8;
 }
+
+.detail-figure-stack,
+.detail-figure-grid {
+  display: grid;
+  gap: 1rem;
+  margin: 0 0 1.25rem;
+}
+
+.detail-figure-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.detail-figure-card {
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface-soft);
+}
+
+.detail-figure-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 720px) {
+  .detail-figure-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
