@@ -73,8 +73,11 @@ export const projects = [
       organization: "Neowiz",
       period: "Aug 2022 - Oct 2022",
       keywords: "Signal processing, multivariate prediction, sentiment analysis",
-      heroImage: "images/PnP/PnP_Lip_Sync.png",
-      heroAlt: "Lip sync and emotion pipeline",
+      heroVideo: {
+        src: "video/Lip%20Sync.mp4",
+        type: "video/mp4",
+      },
+      heroAlt: "Lip sync and emotion pipeline video",
       overview: [
         "The goal was to reduce repetitive manual work in facial animation authoring while preserving expressive control for production artists. The pipeline linked speech-to-viseme estimation with sentiment-aware expression generation so dialogue could be translated into animation more consistently.",
         "From a systems perspective, the work combined signal processing, multivariate prediction, and lightweight sentiment analysis into a practical content workflow. It was designed as a deployable production tool rather than a standalone research demo.",
@@ -106,8 +109,11 @@ export const projects = [
       organization: "Neowiz",
       period: "Jun 2021 - Oct 2022",
       keywords: "Neural representation, signal processing, GAN-based style transfer",
-      heroImage: "images/PnP/PnP_Neural_Filter.png",
-      heroAlt: "Neural audio filter",
+      heroVideo: {
+        src: "video/Neural%20Audio%20Filter.mp4",
+        type: "video/mp4",
+      },
+      heroAlt: "Neural audio filter video",
       overview: [
         "The production need was to create convincing mechanical creature voices without relying entirely on handcrafted sound design for every variant. The project framed this as a domain transfer problem between organic vocal inputs and stylized machinery-like outputs.",
         "The resulting system used GAN-based style transfer ideas and signal processing considerations to create a practical transformation pipeline. The work was applied in the production context of Lies of P, where consistency, speed, and artistic usability mattered as much as raw novelty.",

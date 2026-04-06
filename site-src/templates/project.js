@@ -9,6 +9,14 @@ import {
 export function renderProjectPage({ site, project }) {
   const { detail } = project
   const mediaLinks = detail.mediaLinks || []
+  const heroMediaHtml = detail.heroVideo
+    ? `<div class="detail-hero-video-shell">
+          <video class="detail-hero-video-player" controls preload="metadata" playsinline>
+            <source src="${resolvePath("../../", detail.heroVideo.src)}" type="${escapeHtml(detail.heroVideo.type || "video/mp4")}">
+            Your browser does not support the video tag.
+          </video>
+        </div>`
+    : `<img class="detail-hero-image" src="${resolvePath("../../", detail.heroImage)}" alt="${escapeHtml(detail.heroAlt)}">`
 
   const body = `  <div class="container page-shell">
     ${renderBackHeader({ href: "../../", label: "Project" })}
@@ -31,7 +39,7 @@ export function renderProjectPage({ site, project }) {
     <main class="main-content">
       <div class="detail-layout detail-layout-single">
         <div>
-          <img class="detail-hero-image" src="${resolvePath("../../", detail.heroImage)}" alt="${escapeHtml(detail.heroAlt)}">
+          ${heroMediaHtml}
           ${
             mediaLinks.length
               ? `<div class="project-media-links">
