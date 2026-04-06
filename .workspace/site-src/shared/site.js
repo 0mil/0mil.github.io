@@ -1,7 +1,7 @@
 export const site = {
   title: "Jin-Hyeong Park",
   description:
-    "Jin-Hyeong Park is a research engineer working on controllable visual representations, inverse rendering, and AI systems for game content creation.",
+    "Jin-Hyeong Park is an ML engineer working at the intersection of computer graphics and machine learning, with interests in inverse rendering, neural 3D representations, and neural relighting.",
   faviconPath: "images/favicon.svg",
   profileImagePath: "images/profile_2026.png",
   cvPath: "files/Jin-Hyeong%20Park,%20CV.pdf",
@@ -34,3 +34,4 @@ export const site = {
     },
   ],
 }
+

@@ -1,7 +1,36 @@
 export const home = {
   introParagraphs: [
-    "I am a Research Engineer at Neowiz and received my M.S. from Chung-Ang University. My work centers on learning-based visual representations with an emphasis on physical structure and controllability.",
-    "I am interested in how neural models can be guided by physically meaningful priors such as geometry, materials, and intrinsic image structure to support reliable reconstruction, rendering, and editing of visual content. In practice, I care most about systems that survive real production workflows and remain useful to artists and downstream tools.",
+    [
+      {
+        text: "I am an ML engineer with industry experience in game production and AI-driven content pipelines. My work lies at the intersection of computer graphics and machine learning, with a focus on inverse rendering, neural 3D representations, and neural relighting. I am particularly interested in research collaboration and internship opportunities in computer graphics and vision.",
+      },
+    ],
+    [
+      { text: "I received my M.S. in Computer Science from " },
+      {
+        text: "Chung-Ang University",
+        href: "https://neweng.cau.ac.kr/index.do",
+      },
+      { text: ", where I worked in the " },
+      {
+        text: "Automated Machine Learning Lab",
+        href: "http://ml.cau.ac.kr/",
+      },
+      { text: " on a range of machine learning topics." },
+    ],
+    [
+      { text: "I was credited on " },
+      {
+        text: "Lies of P (2023)",
+        href: "https://www.mobygames.com/person/1478116/jin-hyeong-park/",
+      },
+      { text: ", an AAA title developed by " },
+      {
+        text: "NEOWIZ",
+        href: "https://www.neowiz.com/en",
+      },
+      { text: "." },
+    ],
   ],
   news: [
     {

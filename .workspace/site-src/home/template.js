@@ -110,7 +110,12 @@ export function renderHomePage({ site, home, publications, projects }) {
           })
           .join("")}</h1>
         ${home.introParagraphs
-          .map((paragraph) => `        <p>${escapeHtml(paragraph)}</p>`)
+          .map((paragraph) => {
+            if (Array.isArray(paragraph)) {
+              return `        <p>${renderTextParts(paragraph)}</p>`
+            }
+            return `        <p>${escapeHtml(paragraph)}</p>`
+          })
           .join("\n")}
       </div>
     </section>
