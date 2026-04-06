@@ -360,6 +360,11 @@ img {
   margin-bottom: 0;
 }
 
+.hero-bio strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
 .hero-bio a {
   color: #6c9ff8;
   font-weight: 600;
@@ -1149,6 +1154,7 @@ img {
   flex-wrap: wrap;
   gap: 0.4rem;
 }
+
 
 
 
