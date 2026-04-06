@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Project detail page for neural audio filtering for stylized creature voice transformation by Jin-Hyeong Park.">
+  <meta name="description" content="Project detail page for neural audio style transfer for mechanical creature voice design in Lies of P by Jin-Hyeong Park.">
   <title>Neural Audio Filter for Transforming Monster Voices into Machinery Sounds - Jin-Hyeong Park</title>
   <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +33,7 @@
       </div>
       <h1 class="page-title">Neural Audio Filter for Transforming Monster Voices into Machinery Sounds</h1>
       <div class="page-intro">
-        <p>This project explored neural audio transformation for converting monster-like vocal performances into machine-like sounds suitable for game production.</p>
+        <p>This project explored neural audio style transfer for generating machine-like creature voices for Lies of P while preserving the original performance cues that made them feel alive.</p>
       </div>
       <div class="page-meta-inline">
         <span><strong>Organization</strong> Neowiz</span>
@@ -51,16 +51,62 @@
             Your browser does not support the video tag.
           </video>
         </div>
-          <div class="project-media-links">
-            <a href="https://youtu.be/QqUCyK8s5wA" class="pub-link" target="_blank" rel="noopener noreferrer">watch on YouTube</a>
-          </div>
+          
+          <blockquote class="detail-quote">A neural audio style transfer project for generating machine-like creature voices for Lies of P.</blockquote>
           <section class="section">
             <div class="section-header">
               <div class="section-label">Overview</div>
             </div>
             <div class="detail-copy">
-              <p>The production need was to create convincing mechanical creature voices without relying entirely on handcrafted sound design for every variant. The project framed this as a domain transfer problem between organic vocal inputs and stylized machinery-like outputs.</p>
-              <p>The resulting system used GAN-based style transfer ideas and signal processing considerations to create a practical transformation pipeline. The work was applied in the production context of Lies of P, where consistency, speed, and artistic usability mattered as much as raw novelty.</p>
+              <p>This project explored neural audio style transfer for designing mechanical creature voices in the world of Lies of P. The central challenge was that the monsters were intended to sound machine-like rather than organic, yet raw mechanical recordings lacked the timing, force, and expressive motion needed for believable creature performances.</p>
+              <p>Instead of relying only on conventional sound design techniques such as filtering, layering, and manual editing, I developed a neural audio filter that transformed monster vocal samples into mechanical textures while retaining the original performance cues that made them feel alive.</p>
+            </div>
+          </section>
+          <section class="section">
+            <div class="section-header">
+              <div class="section-label">Approach</div>
+            </div>
+            <div class="detail-copy">
+              <p>The system was built on a non-parallel spectrogram-based audio translation framework and adapted for game audio rather than standard voice conversion.</p>
+              <p>My main focus was not simply transferring texture, but preserving the dynamics and accent structure of the source signal so that the output would still feel like an intentional creature performance rather than a layer of generic machine noise.</p>
+              <p>To support broader artistic variation, I also organized the reference mechanical sound library into a small number of stylistic groups, allowing the team to explore multiple output directions with different machine-like characteristics.</p>
+              
+              
+            </div>
+          </section>
+          <section class="section">
+            <div class="section-header">
+              <div class="section-label">Key Contributions</div>
+            </div>
+            <div class="detail-copy">
+              
+              <ul class="detail-list">
+              <li>Adapted a non-parallel spectrogram translation approach for mechanical creature sound design in a production setting.</li>
+              <li>Modified the training objective to better preserve the temporal dynamics and expressive contour of the original vocal input during style transfer.</li>
+              <li>Structured the reference sound library into multiple stylistic clusters to generate different categories of mechanical sound candidates rather than a single uniform output.</li>
+            </ul>
+              
+            </div>
+          </section>
+          <section class="section">
+            <div class="section-header">
+              <div class="section-label">Outcome</div>
+            </div>
+            <div class="detail-copy">
+              <p>This project turned a difficult manual sound design problem into a reusable generative tool for creating stylized sound samples.</p>
+              <p>The generated outputs were used as candidate assets within the audio production workflow of Lies of P, helping the team produce mechanical creature sounds more efficiently while maintaining consistency with the game&#39;s worldbuilding and tone.</p>
+              
+              
+            </div>
+          </section>
+          <section class="section">
+            <div class="section-header">
+              <div class="section-label">Technical Takeaway</div>
+            </div>
+            <div class="detail-copy">
+              <p>A key lesson from this project was that perceptually convincing audio transfer depended less on matching surface texture alone and more on preserving the motion and expressive structure of the original source signal.</p>
+              
+              
             </div>
           </section>
         </div>

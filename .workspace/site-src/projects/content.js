@@ -82,12 +82,7 @@ export const projects = [
         "The goal was to reduce repetitive manual work in facial animation authoring while preserving expressive control for production artists. The pipeline linked speech-to-viseme estimation with sentiment-aware expression generation so dialogue could be translated into animation more consistently.",
         "From a systems perspective, the work combined signal processing, multivariate prediction, and lightweight sentiment analysis into a practical content workflow. It was designed as a deployable production tool rather than a standalone research demo.",
       ],
-      mediaLinks: [
-        {
-          href: "https://youtu.be/VZ4Cizmscx0",
-          label: "watch on YouTube",
-        },
-      ],
+      mediaLinks: [],
     },
   },
   {
@@ -103,9 +98,9 @@ export const projects = [
     cardLinks: [{ href: "https://youtu.be/QqUCyK8s5wA", label: "video" }],
     detail: {
       metaDescription:
-        "Project detail page for neural audio filtering for stylized creature voice transformation by Jin-Hyeong Park.",
+        "Project detail page for neural audio style transfer for mechanical creature voice design in Lies of P by Jin-Hyeong Park.",
       intro:
-        "This project explored neural audio transformation for converting monster-like vocal performances into machine-like sounds suitable for game production.",
+        "This project explored neural audio style transfer for generating machine-like creature voices for Lies of P while preserving the original performance cues that made them feel alive.",
       organization: "Neowiz",
       period: "Jun 2021 - Oct 2022",
       keywords: "Neural representation, signal processing, GAN-based style transfer",
@@ -114,16 +109,44 @@ export const projects = [
         type: "video/mp4",
       },
       heroAlt: "Neural audio filter video",
+      quote:
+        "A neural audio style transfer project for generating machine-like creature voices for Lies of P.",
       overview: [
-        "The production need was to create convincing mechanical creature voices without relying entirely on handcrafted sound design for every variant. The project framed this as a domain transfer problem between organic vocal inputs and stylized machinery-like outputs.",
-        "The resulting system used GAN-based style transfer ideas and signal processing considerations to create a practical transformation pipeline. The work was applied in the production context of Lies of P, where consistency, speed, and artistic usability mattered as much as raw novelty.",
+        "This project explored neural audio style transfer for designing mechanical creature voices in the world of Lies of P. The central challenge was that the monsters were intended to sound machine-like rather than organic, yet raw mechanical recordings lacked the timing, force, and expressive motion needed for believable creature performances.",
+        "Instead of relying only on conventional sound design techniques such as filtering, layering, and manual editing, I developed a neural audio filter that transformed monster vocal samples into mechanical textures while retaining the original performance cues that made them feel alive.",
       ],
-      mediaLinks: [
+      sections: [
         {
-          href: "https://youtu.be/QqUCyK8s5wA",
-          label: "watch on YouTube",
+          label: "Approach",
+          paragraphs: [
+            "The system was built on a non-parallel spectrogram-based audio translation framework and adapted for game audio rather than standard voice conversion.",
+            "My main focus was not simply transferring texture, but preserving the dynamics and accent structure of the source signal so that the output would still feel like an intentional creature performance rather than a layer of generic machine noise.",
+            "To support broader artistic variation, I also organized the reference mechanical sound library into a small number of stylistic groups, allowing the team to explore multiple output directions with different machine-like characteristics.",
+          ],
+        },
+        {
+          label: "Key Contributions",
+          items: [
+            "Adapted a non-parallel spectrogram translation approach for mechanical creature sound design in a production setting.",
+            "Modified the training objective to better preserve the temporal dynamics and expressive contour of the original vocal input during style transfer.",
+            "Structured the reference sound library into multiple stylistic clusters to generate different categories of mechanical sound candidates rather than a single uniform output.",
+          ],
+        },
+        {
+          label: "Outcome",
+          paragraphs: [
+            "This project turned a difficult manual sound design problem into a reusable generative tool for creating stylized sound samples.",
+            "The generated outputs were used as candidate assets within the audio production workflow of Lies of P, helping the team produce mechanical creature sounds more efficiently while maintaining consistency with the game's worldbuilding and tone.",
+          ],
+        },
+        {
+          label: "Technical Takeaway",
+          paragraphs: [
+            "A key lesson from this project was that perceptually convincing audio transfer depended less on matching surface texture alone and more on preserving the motion and expressive structure of the original source signal.",
+          ],
         },
       ],
+      mediaLinks: [],
     },
   },
   {

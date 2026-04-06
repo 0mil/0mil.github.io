@@ -6,9 +6,39 @@ import {
   renderHead,
 } from "../shared/templates/shared.js"
 
+function renderSection(section) {
+  const paragraphs = (section.paragraphs || [])
+    .map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`)
+    .join("\n              ")
+
+  const items = (section.items || []).length
+    ? `<ul class="detail-list">
+              ${section.items
+                .map((item) => `<li>${escapeHtml(item)}</li>`)
+                .join("\n              ")}
+            </ul>`
+    : ""
+
+  const link = section.link
+    ? `<p><a href="${escapeHtml(section.link.href)}" class="pub-link" target="_blank" rel="noopener noreferrer">${escapeHtml(section.link.label)}</a></p>`
+    : ""
+
+  return `<section class="section">
+            <div class="section-header">
+              <div class="section-label">${escapeHtml(section.label)}</div>
+            </div>
+            <div class="detail-copy">
+              ${paragraphs}
+              ${items}
+              ${link}
+            </div>
+          </section>`
+}
+
 export function renderProjectPage({ site, project }) {
   const { detail } = project
-  const mediaLinks = detail.mediaLinks || []
+  const mediaLinks = detail.heroVideo ? [] : detail.mediaLinks || []
+  const extraSections = detail.sections || []
   const heroMediaHtml = detail.heroVideo
     ? `<div class="detail-hero-video-shell">
           <video class="detail-hero-video-player" controls preload="metadata" playsinline>
@@ -52,6 +82,11 @@ export function renderProjectPage({ site, project }) {
           </div>`
               : ""
           }
+          ${
+            detail.quote
+              ? `<blockquote class="detail-quote">${escapeHtml(detail.quote)}</blockquote>`
+              : ""
+          }
           <section class="section">
             <div class="section-header">
               <div class="section-label">Overview</div>
@@ -62,6 +97,7 @@ export function renderProjectPage({ site, project }) {
                 .join("\n              ")}
             </div>
           </section>
+          ${extraSections.map(renderSection).join("\n          ")}
         </div>
       </div>
     </main>
@@ -86,3 +122,4 @@ export function renderProjectPage({ site, project }) {
     bodyTheme: "light",
   })
 }
+
