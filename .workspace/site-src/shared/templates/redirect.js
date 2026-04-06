@@ -1,4 +1,4 @@
-import { escapeHtml } from "../lib/html.js"
+﻿import { escapeHtml } from "../lib/html.js"
 import { renderDocument } from "./shared.js"
 
 export function renderRedirectPage({ title, target, bodyHtml }) {
@@ -19,3 +19,4 @@ export function renderRedirectPage({ title, target, bodyHtml }) {
     bodyTheme: "light",
   })
 }
+

@@ -1,10 +1,10 @@
-﻿import { escapeHtml, resolvePath } from "../lib/html.js"
+﻿import { escapeHtml, resolvePath } from "../shared/lib/html.js"
 import {
   renderBackHeader,
   renderDocument,
   renderFooter,
   renderHead,
-} from "./shared.js"
+} from "../shared/templates/shared.js"
 
 function renderGalleryItem(item) {
   return `<article class="gallery-card">
@@ -80,5 +80,6 @@ export function renderGalleryPage({ site, gallery }) {
     bodyTheme: "light",
   })
 }
+
 
 

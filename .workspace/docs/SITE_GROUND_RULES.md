@@ -1,14 +1,14 @@
-﻿# Site Ground Rules
+# Site Ground Rules
 
 This site is maintained as a static GitHub Pages site with a small build step.
 
 ## Source Of Truth
 
-- Edit structured content in `site-src/content/`.
-- Edit shared page layouts in `site-src/templates/`.
-- Edit shared helpers in `site-src/lib/`.
+- Edit homepage content in `.workspace/site-src/home/content.js`.
+- Edit project content in `.workspace/site-src/projects/content.js`, publication cards in `.workspace/site-src/publications/content.js`, and gallery content in `.workspace/site-src/gallery/content.js`.
+- Edit shared site config in `.workspace/site-src/shared/site.js`, redirects in `.workspace/site-src/shared/redirects.js`, and shared helpers/templates in `.workspace/site-src/shared/`.
 - Edit shared runtime styling and behavior in `assets/styles.css`, `assets/main.js`, and `assets/analytics.js`.
-- Edit the cloud widget only in `toys/`.
+- Edit the cloud widget only in `.workspace/toys/`.
 
 ## Generated Files
 
@@ -17,10 +17,7 @@ Do not hand-edit these unless you are debugging generated output temporarily.
 - `index.html`
 - `gallery/index.html`
 - `projects/*/index.html` for generated project pages
-- `about/index.html`
-- `cv/index.html`
-- `PnP/index.html`
-- `v2/**/*.html` redirect shims
+- `publications/index.html`
 - `assets/site-config.js`
 
 After changing content or templates, rebuild them instead of editing output files directly.
@@ -30,13 +27,13 @@ After changing content or templates, rebuild them instead of editing output file
 Main site:
 
 ```powershell
-node scripts/build-site.mjs
+./build-site.ps1
 ```
 
 Cloud widget:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\toys\build-for-site.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File .\.workspace\toys\build-for-site.ps1
 ```
 
 ## Local Preview
@@ -59,28 +56,28 @@ Then verify:
 
 ### New publication card on the homepage
 
-1. Add an entry to `site-src/content/publications.js`.
-2. Run `node scripts/build-site.mjs`.
+1. Add an entry to `.workspace/site-src/publications/content.js`.
+2. Run `./build-site.ps1`.
 
 Use the shared card structure unless the publication truly needs a rich custom page like `drc-3dgs`.
 
 ### New project
 
-1. Add an entry to `site-src/content/projects.js`.
+1. Add an entry to `.workspace/site-src/projects/content.js`.
 2. If it needs a detail page, include `slug` and `detail`.
-3. Run `node scripts/build-site.mjs`.
+3. Run `./build-site.ps1`.
 
 Projects with `slug` and `detail` automatically generate `/projects/<slug>/index.html`.
 
 ### New gallery item
 
 1. Add the image asset under `artworks/`.
-2. Add an item to the correct category in `site-src/content/gallery.js`.
-3. Run `node scripts/build-site.mjs`.
+2. Add an item to the correct category in `.workspace/site-src/gallery/content.js`.
+3. Run `./build-site.ps1`.
 
 ### Site-wide settings
 
-Update `site-src/content/site.js` for:
+Update `.workspace/site-src/shared/site.js` for:
 
 - site title
 - GA4 measurement ID
@@ -113,7 +110,7 @@ Create or keep a hand-authored custom page only when:
 
 ## Cloud Widget Rule
 
-- `toys/` is the only editable source for the cloud widget.
+- `.workspace/toys/` is the only editable source for the cloud widget.
 - `embeds/cloud/` is built output and should not be treated as the source of truth.
 - Keep the widget isolated from the main homepage runtime through the iframe boundary.
 
@@ -124,4 +121,3 @@ Create or keep a hand-authored custom page only when:
 - Rebuild after every structural content change.
 - Preview locally before pushing.
 - Avoid reintroducing Jekyll or another full framework unless there is a strong maintenance reason.
-

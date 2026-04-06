@@ -1,4 +1,4 @@
-import { escapeHtml, resolvePath } from "../lib/html.js"
+﻿import { escapeHtml, resolvePath } from "../lib/html.js"
 
 export function renderThemeToggle() {
   return `<button class="theme-toggle" data-theme-toggle type="button" aria-label="Toggle theme">
@@ -74,3 +74,4 @@ ${body}
 </html>
 `
 }
+

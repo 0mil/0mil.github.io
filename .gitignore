@@ -1,6 +1,6 @@
 # Ignore the contents of the _site directory
 _site/
-video/
+/.workspace/archive/video/
 
 # Ignore the Gemfile that is generated
 Gemfile.lock
@@ -13,9 +13,9 @@ run.bat
 # Internal migration notes / scratch assets
 report.md
 v2_template/
-.conda-node/
-.tmp-build/
-v2-template/
-toys/node_modules/
-toys/build/
+.workspace/local/.conda-node/
+.workspace/local/.tmp-build/
+.workspace/references/v2-template/
+.workspace/toys/node_modules/
+.workspace/toys/build/
 site-dist/

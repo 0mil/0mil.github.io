@@ -1,11 +1,11 @@
-import { escapeHtml, renderTextParts } from "../lib/html.js"
+﻿import { escapeHtml, renderTextParts } from "../shared/lib/html.js"
 import {
   renderDocument,
   renderFooter,
   renderHead,
   renderSocialIcons,
   renderThemeToggle,
-} from "./shared.js"
+} from "../shared/templates/shared.js"
 
 function renderPublicationCard(publication) {
   const imageMarkup =
@@ -219,3 +219,4 @@ export function renderHomePage({ site, home, publications, projects }) {
     bodyTheme: "light",
   })
 }
+

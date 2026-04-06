@@ -1,19 +1,20 @@
-﻿param(
-  [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
+param(
+  [string]$RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 )
 
 $ErrorActionPreference = 'Stop'
 
-$nodeRoot = Join-Path $RepoRoot '.conda-node'
+$workspaceRoot = Join-Path $RepoRoot '.workspace'
+$nodeRoot = Join-Path $workspaceRoot 'local\.conda-node'
 $nodeExe = Join-Path $nodeRoot 'node.exe'
 $npmCli = Join-Path $nodeRoot 'node_modules\npm\bin\npm-cli.js'
-$projectDir = Join-Path $RepoRoot 'toys'
+$projectDir = Join-Path $workspaceRoot 'toys'
 $buildDir = Join-Path $projectDir 'build'
 $targetDir = Join-Path $RepoRoot 'embeds\cloud'
-$tmpDir = Join-Path $RepoRoot '.tmp-build'
+$tmpDir = Join-Path $workspaceRoot 'local\.tmp-build'
 
 if (!(Test-Path $nodeExe) -or !(Test-Path $npmCli)) {
-  throw 'Local Node runtime not found. Create x:\w\academicpages\0mil.github.io\.conda-node first.'
+  throw 'Local Node runtime not found. Create x:\w\academicpages\0mil.github.io\.workspace\local\.conda-node first.'
 }
 
 $env:PATH = "$nodeRoot;$env:PATH"

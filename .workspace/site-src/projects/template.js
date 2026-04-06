@@ -1,10 +1,10 @@
-import { escapeHtml, resolvePath } from "../lib/html.js"
+﻿import { escapeHtml, resolvePath } from "../shared/lib/html.js"
 import {
   renderBackHeader,
   renderDocument,
   renderFooter,
   renderHead,
-} from "./shared.js"
+} from "../shared/templates/shared.js"
 
 export function renderProjectPage({ site, project }) {
   const { detail } = project
@@ -78,3 +78,4 @@ export function renderProjectPage({ site, project }) {
     bodyTheme: "light",
   })
 }
+

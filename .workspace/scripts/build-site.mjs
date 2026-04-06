@@ -1,19 +1,19 @@
-﻿import fs from "node:fs"
+import fs from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 
-import { gallery } from "../site-src/content/gallery.js"
-import { home } from "../site-src/content/home.js"
-import { projects } from "../site-src/content/projects.js"
-import { publications } from "../site-src/content/publications.js"
-import { redirects } from "../site-src/content/redirects.js"
-import { site } from "../site-src/content/site.js"
-import { renderGalleryPage } from "../site-src/templates/gallery.js"
-import { renderHomePage } from "../site-src/templates/home.js"
-import { renderProjectPage } from "../site-src/templates/project.js"
-import { renderRedirectPage } from "../site-src/templates/redirect.js"
+import { gallery } from "../site-src/gallery/content.js"
+import { home } from "../site-src/home/content.js"
+import { projects } from "../site-src/projects/content.js"
+import { publications } from "../site-src/publications/content.js"
+import { redirects } from "../site-src/shared/redirects.js"
+import { site } from "../site-src/shared/site.js"
+import { renderGalleryPage } from "../site-src/gallery/template.js"
+import { renderHomePage } from "../site-src/home/template.js"
+import { renderProjectPage } from "../site-src/projects/template.js"
+import { renderRedirectPage } from "../site-src/shared/templates/redirect.js"
 
-const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..")
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..")
 
 function writeFile(relativePath, content) {
   const outputPath = path.join(repoRoot, relativePath)
@@ -58,4 +58,3 @@ redirects.forEach((redirect) => {
 })
 
 console.log("Built site HTML and site config.")
-
