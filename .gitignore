@@ -15,7 +15,7 @@ report.md
 v2_template/
 .workspace/local/.conda-node/
 .workspace/local/.tmp-build/
-.workspace/references/v2-template/
 .workspace/toys/node_modules/
 .workspace/toys/build/
 site-dist/
+
