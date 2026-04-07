@@ -53,10 +53,10 @@ export const gallery = {
         },
         { title: "Maeklong Railway", year: "2023", assetPath: "artworks/Maeklong_Railway.jpg" },
         { title: "Etude: Shade Tree3", year: "2023", assetPath: "artworks/shade_tree3.jpg" },
-        { title: "Etude: Shade Tree4", year: "2023", assetPath: "artworks/shade_tree4.jpg" },
         { title: "Etude: Shade Tree", year: "2022", assetPath: "artworks/shade_tree.jpg" },
-        { title: "Etude: Shade Tree2", year: "2022", assetPath: "artworks/shade_tree2.jpg" },
       ],
     },
   ],
 }
+
+
