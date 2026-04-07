@@ -173,7 +173,7 @@ img {
   }
 
   .hero-name {
-    font-size: 2rem;
+    font-size: 1.94rem;
     margin-bottom: 0.9rem;
   }
 }
@@ -1211,4 +1211,5 @@ img {
     grid-template-columns: 1fr;
   }
 }
+
 

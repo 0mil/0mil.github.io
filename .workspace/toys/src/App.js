@@ -27,7 +27,7 @@ export default function App() {
   }, [])
 
   const camera = isMobile
-    ? { position: [0, -2.6, 12.4], fov: 62 }
+    ? { position: [0, -1.25, 10.6], fov: 58 }
     : { position: [0, -4.5, 9.5], fov: 52 }
 
   return (
@@ -40,12 +40,12 @@ export default function App() {
       <CameraControls
         makeDefault
         smoothTime={0.65}
-        minDistance={isMobile ? 11.5 : 8.5}
-        maxDistance={isMobile ? 13.5 : 10.5}
+        minDistance={isMobile ? 9.8 : 8.5}
+        maxDistance={isMobile ? 11.2 : 10.5}
         truckSpeed={0}
         dollySpeed={0}
-        minPolarAngle={Math.PI / (isMobile ? 2.05 : 2.25)}
-        maxPolarAngle={Math.PI / (isMobile ? 1.65 : 1.78)}
+        minPolarAngle={Math.PI / (isMobile ? 2.15 : 2.25)}
+        maxPolarAngle={Math.PI / (isMobile ? 1.82 : 1.78)}
         azimuthRotateSpeed={isMobile ? 0.28 : 0.45}
         polarRotateSpeed={isMobile ? 0.22 : 0.3}
       />
@@ -59,9 +59,9 @@ function SingleCloud({ isMobile }) {
   const config = isMobile
     ? {
         ...BASE_CLOUD_CONFIG,
-        bounds: [5.1, 1.55, 1.35],
-        volume: 4.6,
-        opacity: 0.86,
+        bounds: [5.8, 1.8, 1.55],
+        volume: 5.2,
+        opacity: 0.88,
       }
     : BASE_CLOUD_CONFIG
 
@@ -81,7 +81,7 @@ function SingleCloud({ isMobile }) {
   return (
     <>
       <SkyImpl sunPosition={[8, 6, 2]} turbidity={5} rayleigh={0.4} mieCoefficient={0.01} mieDirectionalG={0.85} />
-      <group ref={group} position={isMobile ? [0, -0.1, 0] : [0, 0.1, 0]} scale={isMobile ? 1.08 : 1}>
+      <group ref={group} position={isMobile ? [0, 0.35, 0] : [0, 0.1, 0]} scale={isMobile ? 1.18 : 1}>
         <Clouds material={THREE.MeshLambertMaterial} limit={180} range={12}>
           <Cloud ref={cloud} {...config} />
         </Clouds>
@@ -89,3 +89,4 @@ function SingleCloud({ isMobile }) {
     </>
   )
 }
+
