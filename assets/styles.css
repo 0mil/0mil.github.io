@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --bg-primary: #ffffff;
   --bg-secondary: #f4f7fa;
   --bg-card: #ffffff;
@@ -141,6 +141,7 @@ img {
 }
 
 .theme-toggle {
+  margin-top: 0.3rem;
   width: 36px;
   height: 36px;
   border: 1px solid var(--border);
@@ -1253,6 +1254,9 @@ img {
     grid-template-columns: 1fr;
   }
 }
+
+
+
 
 
 
