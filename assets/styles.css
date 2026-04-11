@@ -57,6 +57,8 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -175,8 +177,9 @@ img {
   .hero-name {
     display: block;
     white-space: nowrap;
-    font-size: 1.68rem;
-    letter-spacing: 0.01em;
+    word-break: keep-all;
+    font-size: clamp(1.48rem, 6.2vw, 1.62rem);
+    letter-spacing: 0;
     margin-bottom: 0.9rem;
   }
 }
@@ -291,7 +294,7 @@ img {
   font-size: 1.16rem;
   font-weight: 700;
   color: var(--accent-bright);
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
   transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
@@ -595,7 +598,7 @@ img {
   color: var(--text-muted);
   font-variant-numeric: tabular-nums;
   text-align: right;
-  white-space: nowrap;
+  white-space: nowrap;`r`n    word-break: keep-all;
 }
 
 .news-text {
@@ -1180,7 +1183,7 @@ img {
 
 .gallery-lightbox-meta {
   color: var(--text-muted);
-  white-space: nowrap;
+  white-space: nowrap;`r`n    word-break: keep-all;
 }
 .miscellany-copy {
   color: var(--text-secondary);
@@ -1250,6 +1253,8 @@ img {
     grid-template-columns: 1fr;
   }
 }
+
+
 
 
 
