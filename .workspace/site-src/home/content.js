@@ -5,7 +5,7 @@
         text: "I am an ML engineer with industry experience in game production and AI-driven content pipelines. I aim to build perceptually-aware graphics systems by integrating human perception into these pipelines. My research interests focus on ",
       },
       {
-        text: "inverse rendering, neural 3D representations, and neural relighting",
+        text: "perceptual-aware graphics, inverse rendering, and neural 3D representations",
         strong: true,
       },
       {
@@ -91,5 +91,6 @@
   },
   cloudWidgetSrc: "embeds/cloud/index.html",
 }
+
 
 
