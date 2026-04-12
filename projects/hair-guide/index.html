@@ -33,12 +33,12 @@
       </div>
       <h1 class="page-title">Automated Hair Guide Model Generation for Game Characters from 3D Reconstruction</h1>
       <div class="page-intro">
-        <p>This detail page keeps the same visual tone and section logic as the main page while giving one project more room for explanation.</p>
+        <p>This project investigated how to convert high-fidelity 3D hair reconstruction into a representation that artists could actually use for game asset production.</p>
       </div>
       <div class="page-meta-inline">
         <span><strong>Organization</strong> Neowiz</span>
         <span><strong>Period</strong> Apr 2024 - Nov 2024</span>
-        <span><strong>Keywords</strong> Geometry processing, 3D content generation, inverse rendering</span>
+        <span><strong>Keywords</strong> 3D content generation, geometry processing, inverse rendering</span>
       </div>
     </section>
 
@@ -47,18 +47,83 @@
         <div>
           <img class="detail-hero-image" src="../../images/PnP/Pnp_Hair_Modeling.png" alt="Hair guide model generation pipeline">
           
-          
+          <blockquote class="detail-quote">A pilot study on turning high-fidelity hair reconstruction into a production-usable guide-hair pipeline.</blockquote>
           <section class="section">
             <div class="section-header">
               <div class="section-label">Overview</div>
             </div>
             <div class="detail-copy">
-              
-              <p>This project focused on optimizing the creation of game hair models by generating hair guide structures from reconstructed 3D data. The pipeline combined geometry processing techniques including clustering, importance sampling, and resampling.</p>
-              <p>The work was motivated by practical production needs rather than purely isolated experiments. The goal was to reduce manual overhead in early hair modeling stages while preserving enough structure for downstream artistic control and refinement.</p>
+              <div class="detail-figure-stack">
+              <figure class="detail-figure-card">
+                <img src="../../images/projects/auto-hair-guide-gen/overview-figure.png" alt="Hair guide pipeline overview" class="detail-figure-image">
+              </figure>
+            </div>
+              <p>This project investigated how to convert high-fidelity 3D hair reconstruction into a representation that artists could actually use for game asset production. Starting from a monocular-video hair reconstruction workflow based on recent research, the system produced dense strand geometry that preserved hairstyle detail well, but the raw output was too heavy and irregular for direct use in Maya or Unreal.</p>
+              <p>I therefore designed a post-processing pipeline that distilled reconstructed strands into a sparse guide-hair model while preserving the overall silhouette, flow, and style of the original hair.</p>
             </div>
           </section>
-          
+          <section class="section">
+            <div class="section-header">
+              <div class="section-label">Approach</div>
+            </div>
+            <div class="detail-copy">
+              <div class="detail-figure-stack">
+              <figure class="detail-figure-card">
+                <img src="../../images/projects/auto-hair-guide-gen/approach-figure.png" alt="Guide hair modeling pipeline" class="detail-figure-image">
+              </figure>
+            </div>
+              <p>The front end reconstructed dense 3D hair from video and converted it into strand-level geometry. I then applied geometry processing in four stages: strand cleanup and normalization, feature extraction, clustering by spatial and directional behavior, and representative-strand selection followed by control-point reduction.</p>
+              <p>In practice, this meant aligning strands into a comparable form, encoding features such as root position, dominant direction, length, and waviness, grouping strands with similar geometric behavior, and selecting representative strands before simplifying them through resampling.</p>
+              <p>This allowed the final guide set to remain lightweight without collapsing the hairstyle into an over-smoothed approximation.</p>
+              
+              
+            </div>
+          </section>
+          <section class="section">
+            <div class="section-header">
+              <div class="section-label">Key Contributions</div>
+            </div>
+            <div class="detail-copy">
+              
+              
+              <ul class="detail-list">
+              <li>Adapted a research-grade monocular hair reconstruction workflow into a production-oriented pipeline for guide-hair generation.</li>
+              <li>Designed a geometry-processing stage that combined strand normalization, clustering, representative-strand selection, and resampling to compress dense reconstructions into editable guide sets.</li>
+              <li>Reduced strand complexity and control-point count while preserving the major volume, silhouette, and directional structure needed for downstream artist workflows.</li>
+            </ul>
+              
+            </div>
+          </section>
+          <section class="section">
+            <div class="section-header">
+              <div class="section-label">Outcome</div>
+            </div>
+            <div class="detail-copy">
+              <div class="detail-figure-grid detail-figure-grid-equal">
+              <figure class="detail-figure-card">
+                <img src="../../images/projects/auto-hair-guide-gen/result-fig1.png" alt="Final guide hair result figure 1" class="detail-figure-image">
+              </figure>
+              <figure class="detail-figure-card">
+                <img src="../../images/projects/auto-hair-guide-gen/result-fig2.png" alt="Final guide hair result figure 2" class="detail-figure-image">
+              </figure>
+            </div>
+              <p>This project reframed recent hair reconstruction research as a pipeline design problem rather than a pure reconstruction benchmark. The resulting workflow preserved the major hairstyle shape and directional structure while lowering strand and control-point complexity, making the output more practical as an intermediate asset for grooming and game-character production.</p>
+              <p>As a pilot study, it established a feasible path from high-fidelity reconstruction to artist-usable guide-hair generation.</p>
+              
+              
+            </div>
+          </section>
+          <section class="section">
+            <div class="section-header">
+              <div class="section-label">Technical Takeaway</div>
+            </div>
+            <div class="detail-copy">
+              
+              <p>For production hair assets, the bottleneck is often not reconstruction fidelity itself, but how effectively dense reconstructed strands can be compressed into a sparse, controllable guide structure without losing silhouette and flow.</p>
+              
+              
+            </div>
+          </section>
         </div>
       </div>
     </main>

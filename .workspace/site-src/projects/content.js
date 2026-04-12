@@ -1,38 +1,70 @@
-export const projects = [
+﻿export const projects = [
   {
     slug: "game-image-generation",
-    title: "Enhanced Game Image Generation AI Service Development and Feature Integration",
+    title: "IP-Consistent Generative Image Service for Multi-Project Game Art Production",
     venue: "Neowiz, Jan 2024 - Present",
     cardDescription:
-      "Developed and iteratively improved a studio-specific AI image generation workflow for concept artists, rapidly integrating new deep learning methods for IP-consistent concept art generation, style transfer, and background variation.",
+      "An internal generative image service for controllable, title-specific artwork creation across multiple game projects.",
     cardImage: {
       src: "images/PnP/Pnp_Image_Generation_Serive.png",
       alt: "Game image generation AI service project",
     },
     detail: {
       metaDescription:
-        "Project detail page for game image generation AI service development by Jin-Hyeong Park.",
+        "Project detail page for an IP-consistent generative image service for multi-project game art production by Jin-Hyeong Park.",
       intro:
-        "This project focused on building and continuously improving a studio-specific image generation workflow for game art production by rapidly adapting new deep learning methods to practical artist needs.",
+        "This project focused on building and operating an internal generative image service for multiple game teams with distinct visual styles and production needs.",
       organization: "Neowiz",
       period: "Jan 2024 - Present",
-      keywords:
-        "Image processing, diffusion models, game art generation, workflow integration",
+      keywords: "Generative models, image processing, IP-consistent generation",
       heroImage: "images/PnP/Pnp_Image_Generation_Serive.png",
-      heroAlt: "Game image generation AI service project",
+      heroAlt: "IP-consistent generative image service project",
+      quote:
+        "An internal AI service for controllable, title-specific image generation across diverse game art workflows.",
       overview: [
-        "The work centered on turning recent generative modeling advances into usable internal tools for real game art production. Rather than applying generic text-to-image workflows as-is, the project emphasized studio-specific generation, image-to-image controllability, and IP consistency for concept art generation, style transfer, and background variation.",
-        "A key part of the project was continuously tracking new deep learning methods and translating them into practical workflow improvements under production constraints. Over long-term deployment, this led not only to a useful internal system, but also to a clearer understanding of how modern generative models can support reliable, controllable visual content creation.",
+        "This project focused on building and operating an internal generative image service for multiple game teams with distinct visual styles and production needs. Rather than supporting a single image-generation task, the service was designed to cover a broad range of artist workflows, including concept ideation, sketch completion, style transfer from real-world references, turnaround illustration, and multi-view drawing generation for downstream 3D production.",
+        "The central challenge was not simply generating high-quality images, but doing so in a way that remained consistent with each title's art direction and reliable enough for repeated use in production.",
+      ],
+      sections: [
+        {
+          label: "Approach",
+          paragraphs: [
+            "I developed task-specific ComfyUI workflows and continuously updated them as the field evolved, integrating new controllable generation methods for structure guidance, identity preservation, style adaptation, layered composition, and reusable editing pipelines.",
+            "The service was shaped through direct iteration with artists across seven internal IPs over more than two years, which meant balancing visual quality against practical concerns such as repeatability, consistency, latency, and ease of use.",
+            "Instead of treating new models and papers as isolated experiments, I evaluated and incorporated them as modular components within a production-oriented system for IP-constrained image generation.",
+          ],
+        },
+        {
+          label: "Key Contributions",
+          items: [
+            "Built and operated an internal generative image service that supported multiple art-production tasks under title-specific style constraints.",
+            "Designed and refined task-specific workflows by integrating controllable generation techniques for structure guidance, identity preservation, style adaptation, and iterative editing.",
+            "Worked directly with artists across seven internal IPs to improve workflow usability and reduce repetitive reference-sharing and iteration overhead in daily production.",
+          ],
+        },
+        {
+          label: "Outcome",
+          paragraphs: [
+            "The service was adopted across seven internal game projects over more than two years, including support for a Google Play-recognized mobile title that exceeded 80 million downloads.",
+            "Internal artist feedback indicated that, for some workflows, the system substantially reduced repetitive sharing of prior references and visual examples, with one interview estimating roughly a 60% reduction.",
+            "More broadly, this project showed that the practical value of generative models in game art production depends less on raw model novelty and more on whether they can be made controllable, consistent, and reliable enough for real artist workflows.",
+          ],
+        },
+        {
+          label: "Technical Takeaway",
+          paragraphs: [
+            "In production art pipelines, the hardest problem is rarely image generation itself; it is building a controllable and IP-consistent system that remains useful across heterogeneous tasks, evolving models, and real artist workflows.",
+          ],
+        },
       ],
       mediaLinks: [],
     },
-  },
-  {
+  },  {
     slug: "hair-guide",
     title: "Automated Hair Guide Model Generation for Game Characters from 3D Reconstruction",
     venue: "Neowiz, Apr 2024 - Nov 2024",
     cardDescription:
-      "Designed a hair guide model generation pipeline for game hair production using geometry processing, clustering, importance sampling, and resampling.",
+      "A production-oriented pipeline for converting dense reconstructed hair into editable guide-hair models.",
     cardImage: {
       src: "images/PnP/Pnp_Hair_Modeling.png",
       alt: "Hair guide model generation",
@@ -41,20 +73,75 @@ export const projects = [
       metaDescription:
         "Project detail page for automated hair guide model generation from 3D reconstruction by Jin-Hyeong Park.",
       intro:
-        "This detail page keeps the same visual tone and section logic as the main page while giving one project more room for explanation.",
+        "This project investigated how to convert high-fidelity 3D hair reconstruction into a representation that artists could actually use for game asset production.",
       organization: "Neowiz",
       period: "Apr 2024 - Nov 2024",
-      keywords: "Geometry processing, 3D content generation, inverse rendering",
+      keywords: "3D content generation, geometry processing, inverse rendering",
       heroImage: "images/PnP/Pnp_Hair_Modeling.png",
       heroAlt: "Hair guide model generation pipeline",
+      quote:
+        "A pilot study on turning high-fidelity hair reconstruction into a production-usable guide-hair pipeline.",
+      overviewFigures: [
+        {
+          src: "images/projects/auto-hair-guide-gen/overview-figure.png",
+          alt: "Hair guide pipeline overview",
+        },
+      ],
       overview: [
-        "This project focused on optimizing the creation of game hair models by generating hair guide structures from reconstructed 3D data. The pipeline combined geometry processing techniques including clustering, importance sampling, and resampling.",
-        "The work was motivated by practical production needs rather than purely isolated experiments. The goal was to reduce manual overhead in early hair modeling stages while preserving enough structure for downstream artistic control and refinement.",
+        "This project investigated how to convert high-fidelity 3D hair reconstruction into a representation that artists could actually use for game asset production. Starting from a monocular-video hair reconstruction workflow based on recent research, the system produced dense strand geometry that preserved hairstyle detail well, but the raw output was too heavy and irregular for direct use in Maya or Unreal.",
+        "I therefore designed a post-processing pipeline that distilled reconstructed strands into a sparse guide-hair model while preserving the overall silhouette, flow, and style of the original hair.",
+      ],
+      sections: [
+        {
+          label: "Approach",
+          figures: [
+            {
+              src: "images/projects/auto-hair-guide-gen/approach-figure.png",
+              alt: "Guide hair modeling pipeline",
+            },
+          ],
+          paragraphs: [
+            "The front end reconstructed dense 3D hair from video and converted it into strand-level geometry. I then applied geometry processing in four stages: strand cleanup and normalization, feature extraction, clustering by spatial and directional behavior, and representative-strand selection followed by control-point reduction.",
+            "In practice, this meant aligning strands into a comparable form, encoding features such as root position, dominant direction, length, and waviness, grouping strands with similar geometric behavior, and selecting representative strands before simplifying them through resampling.",
+            "This allowed the final guide set to remain lightweight without collapsing the hairstyle into an over-smoothed approximation.",
+          ],
+        },
+        {
+          label: "Key Contributions",
+          items: [
+            "Adapted a research-grade monocular hair reconstruction workflow into a production-oriented pipeline for guide-hair generation.",
+            "Designed a geometry-processing stage that combined strand normalization, clustering, representative-strand selection, and resampling to compress dense reconstructions into editable guide sets.",
+            "Reduced strand complexity and control-point count while preserving the major volume, silhouette, and directional structure needed for downstream artist workflows.",
+          ],
+        },
+        {
+          label: "Outcome",
+          figures: [
+            {
+              src: "images/projects/auto-hair-guide-gen/result-fig1.png",
+              alt: "Final guide hair result figure 1",
+            },
+            {
+              src: "images/projects/auto-hair-guide-gen/result-fig2.png",
+              alt: "Final guide hair result figure 2",
+            },
+          ],
+          figureLayout: "equal",
+          paragraphs: [
+            "This project reframed recent hair reconstruction research as a pipeline design problem rather than a pure reconstruction benchmark. The resulting workflow preserved the major hairstyle shape and directional structure while lowering strand and control-point complexity, making the output more practical as an intermediate asset for grooming and game-character production.",
+            "As a pilot study, it established a feasible path from high-fidelity reconstruction to artist-usable guide-hair generation.",
+          ],
+        },
+        {
+          label: "Technical Takeaway",
+          paragraphs: [
+            "For production hair assets, the bottleneck is often not reconstruction fidelity itself, but how effectively dense reconstructed strands can be compressed into a sparse, controllable guide structure without losing silhouette and flow.",
+          ],
+        },
       ],
       mediaLinks: [],
     },
-  },
-  {
+  },  {
     slug: "lip-sync-emotion",
     title: "Development of Facial Animation Pipeline for Lip Sync and Emotion",
     venue: "Neowiz, Aug 2022 - Oct 2022",
@@ -172,5 +259,7 @@ export const projects = [
     },
   },
 ]
+
+
 
 

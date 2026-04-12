@@ -1,4 +1,4 @@
-import { escapeHtml, resolvePath } from "../shared/lib/html.js"
+﻿import { escapeHtml, resolvePath } from "../shared/lib/html.js"
 import {
   renderBackHeader,
   renderDocument,
@@ -11,7 +11,7 @@ function renderFigures(figures = [], layout = "auto") {
     return ""
   }
 
-  const figureClass = layout === "stack" || figures.length === 1 ? "detail-figure-stack" : layout === "asymmetric" ? "detail-figure-grid detail-figure-grid-asymmetric" : "detail-figure-grid"
+  const figureClass = layout === "stack" || figures.length === 1 ? "detail-figure-stack" : layout === "asymmetric" ? "detail-figure-grid detail-figure-grid-asymmetric" : layout === "equal" ? "detail-figure-grid detail-figure-grid-equal" : "detail-figure-grid"
   return `<div class="${figureClass}">
               ${figures
                 .map(
@@ -142,5 +142,6 @@ export function renderProjectPage({ site, project }) {
     bodyTheme: "light",
   })
 }
+
 
 
