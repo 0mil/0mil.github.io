@@ -143,10 +143,10 @@
     },
   },  {
     slug: "lip-sync-emotion",
-    title: "Development of Facial Animation Pipeline for Lip Sync and Emotion",
+    title: "Development of Facial Animation Pipeline for Lip Sync and Emotion Based on Voice and Script",
     venue: "Neowiz, Aug 2022 - Oct 2022",
     cardDescription:
-      "Designed and implemented an automated pipeline for facial animation generation using speech-to-viseme and script-based sentiment cues.",
+      "An automated facial animation pipeline that generated lip-sync and emotional expressions from voice and dialogue scripts.",
     cardImage: {
       src: "images/PnP/PnP_Lip_Sync.png",
       alt: "Lip sync and emotion pipeline",
@@ -154,9 +154,9 @@
     cardLinks: [{ href: "https://youtu.be/VZ4Cizmscx0", label: "video" }],
     detail: {
       metaDescription:
-        "Project detail page for facial animation pipeline development for lip sync and emotion by Jin-Hyeong Park.",
+        "Project detail page for facial animation pipeline development for lip sync and emotion based on voice and script by Jin-Hyeong Park.",
       intro:
-        "This project focused on automating facial animation for cartoon-style characters by combining audio-driven lip sync with script-level emotion cues.",
+        "This project focused on automating facial animation for cartoon-style game characters from voice and script inputs.",
       organization: "Neowiz",
       period: "Aug 2022 - Oct 2022",
       keywords: "Signal processing, multivariate prediction, sentiment analysis",
@@ -165,14 +165,46 @@
         type: "video/mp4",
       },
       heroAlt: "Lip sync and emotion pipeline video",
+      quote:
+        "An automated facial animation pipeline for generating lip sync and emotional expressions from speech and dialogue text.",
       overview: [
-        "The goal was to reduce repetitive manual work in facial animation authoring while preserving expressive control for production artists. The pipeline linked speech-to-viseme estimation with sentiment-aware expression generation so dialogue could be translated into animation more consistently.",
-        "From a systems perspective, the work combined signal processing, multivariate prediction, and lightweight sentiment analysis into a practical content workflow. It was designed as a deployable production tool rather than a standalone research demo.",
+        "This project focused on automating facial animation for cartoon-style game characters from voice and script inputs. The core challenge was that convincing dialogue animation requires two different signals at once: precise mouth motion for lip sync and broader facial expressions that reflect the emotional tone of the line.",
+        "Manual keyframing could achieve this, but it was expensive and difficult to scale across dialogue-heavy content. I therefore designed a pipeline that analyzed vocal audio in the spectral domain to drive lip motion and used script-level sentiment cues to modulate facial expressions, producing rig-compatible animation controls automatically.",
+      ],
+      sections: [
+        {
+          label: "Approach",
+          paragraphs: [
+            "The audio branch converted speech into frame-synchronous acoustic features and used a temporal prediction model to estimate blendshape weights corresponding to viseme-related mouth movements over time.",
+            "Rather than predicting a full facial mesh directly, the system was designed around the existing facial rig, which made the output easier to integrate into character animation workflows.",
+            "In parallel, the text branch analyzed the dialogue script to estimate coarse emotional tone and expression intensity, which was then mapped to upper-face and expression-related controls such as brows, eyes, and cheek movement. The two branches were fused and post-processed with temporal smoothing and rule-based constraints so that the final animation remained stable, readable, and suitable for stylized in-game characters.",
+          ],
+        },
+        {
+          label: "Key Contributions",
+          items: [
+            "Designed an automated pipeline that generated rig-compatible facial animation controls from both voice and dialogue text.",
+            "Built a speech-driven lip-sync stage that mapped spectral and temporal speech features to time-varying blendshape weights for viseme-related mouth motion.",
+            "Added a script-based sentiment branch to modulate expression-related facial controls, allowing lip sync and emotional expression to be generated together rather than as separate manual steps.",
+          ],
+        },
+        {
+          label: "Outcome",
+          paragraphs: [
+            "This project reframed facial animation as a multimodal prediction problem rather than a purely manual animation task. The resulting pipeline automated a significant portion of dialogue-driven facial motion generation and provided a practical bridge between speech processing and stylized character animation.",
+            "As a pilot production tool, it showed that combining fast audio-driven mouth motion with slower text-guided emotional modulation could produce facial performances that were both more scalable and more expressive than lip sync alone.",
+          ],
+        },
+        {
+          label: "Technical Takeaway",
+          paragraphs: [
+            "Believable facial animation depends on separating fast phoneme-driven mouth motion from slower utterance-level emotional modulation, then recombining them into a temporally stable rig-control signal.",
+          ],
+        },
       ],
       mediaLinks: [],
     },
-  },
-  {
+  },  {
     slug: "neural-audio-filter",
     title: "Neural Audio Filter for Transforming Monster Voices into Machinery Sounds",
     venue: "Neowiz, Jun 2021 - Oct 2022",
@@ -259,6 +291,7 @@
     },
   },
 ]
+
 
 
 
