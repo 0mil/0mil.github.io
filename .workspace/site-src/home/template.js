@@ -74,7 +74,16 @@ function renderProjectCard(project) {
               </div>`
 }
 
+function renderExperience(item) {
+  return `<div class="news-item">
+                <div class="news-text"><div class="experience-organization"><strong>${escapeHtml(item.organization)}</strong></div><div class="experience-role">${escapeHtml(item.role)}${item.supervisor ? `<span class="experience-supervisor"> · ${escapeHtml(item.supervisor)}</span>` : ""}</div>${item.description ? `<div class="experience-description">${escapeHtml(item.description)}</div>` : ""}</div>
+                <span class="news-date">${escapeHtml(item.period)}</span>
+              </div>`
+}
+
 export function renderHomePage({ site, home, publications, projects }) {
+  const recentExperience = home.experience.filter((item) => !item.earlier)
+  const earlierExperience = home.experience.filter((item) => item.earlier)
   const featuredPublications = publications.filter((item) => item.featured)
   const earlierPublications = publications.filter((item) => !item.featured)
 
@@ -156,14 +165,18 @@ export function renderHomePage({ site, home, publications, projects }) {
               <div class="section-label">Experience</div>
             </div>
             <div class="news-list">
-              ${home.experience
-                .map(
-                  (item) => `<div class="news-item">
-                <div class="news-text"><div class="experience-organization"><strong>${escapeHtml(item.organization)}</strong></div><div class="experience-role">${escapeHtml(item.role)}${item.supervisor ? `<span class="experience-supervisor"> · ${escapeHtml(item.supervisor)}</span>` : ""}</div>${item.description ? `<div class="experience-description">${escapeHtml(item.description)}</div>` : ""}</div>
-                <span class="news-date">${escapeHtml(item.period)}</span>
-              </div>`
-                )
-                .join("\n              ")}
+              ${recentExperience.map(renderExperience).join("\n              ")}
+              ${earlierExperience.length ? `<div class="pub-collapse" data-pub-collapse>
+                <button class="pub-collapse-toggle" type="button" aria-expanded="false" aria-controls="earlier-experience" data-pub-collapse-toggle>
+                  <span>Earlier Experience</span>
+                  <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="pub-collapse-panel" id="earlier-experience" hidden data-pub-collapse-panel>
+                  <div class="news-list">
+                    ${earlierExperience.map(renderExperience).join("\n                    ")}
+                  </div>
+                </div>
+              </div>` : ""}
             </div>
           </section>
 

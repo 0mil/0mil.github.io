@@ -91,11 +91,13 @@
       organization: "Machine Intelligence Lab, CAU",
       role: "Research Assistant",
       period: "Mar 2018 - Aug 2020",
+      earlier: true,
     },
     {
       organization: "Machine Intelligence Lab, CAU",
       role: "Research Intern",
       period: "Jul 2017 - Feb 2018",
+      earlier: true,
     },
   ],
   miscellany: {

@@ -14,3 +14,71 @@ body,
 body {
   background: white;
 }
+
+.cloud-viewer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cartoon-toggle {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  min-height: 36px;
+  padding: 0;
+  border: 1px solid rgba(53, 80, 99, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.42);
+  color: #304250;
+  font: 500 12px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  box-shadow: 0 2px 10px rgba(32, 56, 74, 0.08);
+  cursor: pointer;
+  touch-action: manipulation;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease, background 160ms ease, color 160ms ease;
+}
+
+.cloud-viewer:hover .cartoon-toggle,
+.cartoon-toggle:focus-visible {
+  opacity: 0.75;
+  pointer-events: auto;
+}
+
+.cartoon-toggle:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.cartoon-toggle[aria-pressed="true"] {
+  background: rgba(48, 78, 101, 0.55);
+  color: #ffffff;
+  border-color: rgba(48, 78, 101, 0.3);
+}
+
+.cartoon-toggle:focus-visible {
+  outline: 2px solid #304e65;
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .cartoon-toggle {
+    right: 10px;
+    bottom: 10px;
+    min-height: 44px;
+    width: 44px;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cartoon-toggle {
+    opacity: 0.75;
+    pointer-events: auto;
+  }
+}
