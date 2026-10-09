@@ -1,6 +1,6 @@
 import * as THREE from "three"
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
-import { Canvas, useFrame } from "@react-three/fiber"
+import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { Clouds, Cloud, TrackballControls, Sky as SkyImpl } from "@react-three/drei"
 
 const CLOUD_ANIMATION_SPEED = 1.32
@@ -38,13 +38,13 @@ export default function App() {
 
   return (
     <div className="cloud-viewer">
-      <Canvas dpr={isMobile ? [1, 1.35] : [1, 1.75]} camera={camera}>
+      <Canvas frameloop={isCartoon ? "demand" : "always"} dpr={isMobile ? [1, 1.35] : [1, 1.75]} camera={camera}>
       <color attach="background" args={["#eef3f7"]} />
       <ambientLight intensity={Math.PI / 1.7} />
       <directionalLight position={[4, 8, 6]} intensity={2.5} color="#ffffff" />
       <directionalLight position={[-6, 2, 4]} intensity={1.25} color="#dfe8f1" />
       <SingleCloud isMobile={isMobile} isCartoon={isCartoon} />
-      <CloudOutline enabled={isCartoon} />
+      <CloudOutline enabled={isCartoon} isMobile={isMobile} />
       <ReturningCameraControls
         key={isMobile ? "mobile" : "desktop"}
         isMobile={isMobile}
@@ -76,9 +76,13 @@ export default function App() {
   )
 }
 
-function CloudOutline({ enabled }) {
+function CloudOutline({ enabled, isMobile }) {
   const resources = useMemo(() => {
-    const target = new THREE.WebGLRenderTarget(1, 1)
+    // Keep depth labels discrete: blended labels can create broken inner strokes.
+    const target = new THREE.WebGLRenderTarget(1, 1, {
+      minFilter: THREE.NearestFilter,
+      magFilter: THREE.NearestFilter,
+    })
     const material = new THREE.ShaderMaterial({
       uniforms: { mask: { value: target.texture }, texel: { value: new THREE.Vector2() } },
       vertexShader: `varying vec2 vUv;
@@ -86,34 +90,23 @@ function CloudOutline({ enabled }) {
       fragmentShader: `uniform sampler2D mask;
         uniform vec2 texel;
         varying vec2 vUv;
-        float silhouette(vec2 uv) {
-          vec2 smoothStep = texel * 0.11;
-          return (texture2D(mask, uv).a * 4.0 +
-            texture2D(mask, uv + vec2(smoothStep.x, 0.0)).a +
-            texture2D(mask, uv - vec2(smoothStep.x, 0.0)).a +
-            texture2D(mask, uv + vec2(0.0, smoothStep.y)).a +
-            texture2D(mask, uv - vec2(0.0, smoothStep.y)).a) / 8.0;
-        }
         void main() {
-          float center = silhouette(vUv);
-          // Skip hairline gaps between overlapping cells instead of outlining them.
-          vec2 gap = texel * 0.4;
-          float horizontal = min(texture2D(mask, vUv + vec2(gap.x, 0.0)).a,
-            texture2D(mask, vUv - vec2(gap.x, 0.0)).a);
-          float vertical = min(texture2D(mask, vUv + vec2(0.0, gap.y)).a,
-            texture2D(mask, vUv - vec2(0.0, gap.y)).a);
-          center = max(center, max(horizontal, vertical));
+          // Use the same solid coverage for inner and outer strokes.
+          // Selective gap filling could cut a continuous outline into dashes.
+          vec4 centerSample = texture2D(mask, vUv);
+          float center = centerSample.a;
           float edge = 0.0;
           float overlap = 0.0;
-          vec4 centerSample = texture2D(mask, vUv);
           float depth = centerSample.r / max(centerSample.a, 0.001);
-          for (int i = 0; i < 24; i++) {
-            float angle = float(i) * 6.2831853 / 24.0;
-            vec2 uv = vUv + vec2(cos(angle), sin(angle)) * texel;
-            float neighbor = silhouette(uv);
-            edge = max(edge, neighbor);
-            // Draw on the foreground side of a substantial depth boundary.
+          for (int i = 0; i < 16; i++) {
+            float angle = float(i) * 6.2831853 / 16.0;
+            vec2 direction = vec2(cos(angle), sin(angle)) * texel;
+            vec2 uv = vUv + direction;
             vec4 neighborSample = texture2D(mask, uv);
+            float neighbor = neighborSample.a;
+            // Sample inside the stroke too, so narrow gaps cannot break its coverage.
+            edge = max(edge, max(neighbor, texture2D(mask, vUv + direction * 0.5).a));
+            // Draw on the foreground side of a substantial depth boundary.
             float neighborDepth = neighborSample.r / max(neighborSample.a, 0.001);
             overlap = max(overlap, step(0.035, depth - neighborDepth) *
               step(0.995, neighborSample.a) * step(0.995, centerSample.a));
@@ -132,7 +125,7 @@ function CloudOutline({ enabled }) {
     const geometry = new THREE.PlaneGeometry(2, 2)
     const overlay = new THREE.Scene()
     overlay.add(new THREE.Mesh(geometry, material))
-    return { target, material, geometry, overlay, camera: new THREE.Camera(), size: new THREE.Vector2() }
+    return { target, material, geometry, overlay, camera: new THREE.Camera(), size: new THREE.Vector2(), clearColor: new THREE.Color(), hidden: [] }
   }, [])
 
   useEffect(() => () => {
@@ -151,11 +144,12 @@ function CloudOutline({ enabled }) {
     if (resources.target.width !== width || resources.target.height !== height) {
       resources.target.setSize(width, height)
     }
-    const thickness = 5.0 * gl.getPixelRatio()
+    const thickness = (isMobile ? 3.5 : 5.0) * gl.getPixelRatio()
     resources.material.uniforms.texel.value.set(thickness / width, thickness / height)
-    const hidden = []
+    const hidden = resources.hidden
+    hidden.length = 0
     const background = scene.background
-    const clearColor = gl.getClearColor(new THREE.Color())
+    const clearColor = gl.getClearColor(resources.clearColor)
     const clearAlpha = gl.getClearAlpha()
     const previousTarget = gl.getRenderTarget()
     // Render just the cloud into an alpha mask; leave the sky out of the outline.
@@ -186,9 +180,11 @@ function CloudOutline({ enabled }) {
 }
 
 function ReturningCameraControls({ isMobile, ...props }) {
+  const invalidate = useThree((state) => state.invalidate)
   const controls = useRef()
   const home = useRef()
   const returning = useRef(false)
+  const dragging = useRef(false)
   const offset = useRef(new THREE.Vector3())
 
   useEffect(() => {
@@ -206,6 +202,8 @@ function ReturningCameraControls({ isMobile, ...props }) {
     returning.current = false
 
     const onStart = () => {
+      dragging.current = true
+      invalidate()
       window.clearTimeout(returnTimer)
       returning.current = false
       // Catch the cloud immediately when grabbed again, clearing any old momentum.
@@ -216,6 +214,8 @@ function ReturningCameraControls({ isMobile, ...props }) {
       cameraControls.dynamicDampingFactor = CLOUD_DRAG_DAMPING
     }
     const onEnd = () => {
+      dragging.current = false
+      invalidate()
       window.clearTimeout(returnTimer)
       cameraControls.staticMoving = false
       returnTimer = window.setTimeout(() => {
@@ -224,6 +224,7 @@ function ReturningCameraControls({ isMobile, ...props }) {
         cameraControls.update()
         cameraControls.staticMoving = true
         returning.current = true
+        invalidate()
       }, 500)
     }
 
@@ -232,18 +233,21 @@ function ReturningCameraControls({ isMobile, ...props }) {
     return () => {
       window.clearTimeout(returnTimer)
       returning.current = false
+      dragging.current = false
       cameraControls.removeEventListener("start", onStart)
       cameraControls.removeEventListener("end", onEnd)
     }
-  }, [isMobile])
+  }, [isMobile, invalidate])
 
   useFrame((state, delta) => {
+    // Trackball updates run before this callback; keep drag and return frames alive.
+    if (dragging.current) state.invalidate()
     if (!returning.current || !home.current) return
 
     const cameraControls = controls.current
     const camera = cameraControls.object
     const initial = home.current
-    const blend = 1 - Math.exp(-delta / 0.9)
+    const blend = 1 - Math.exp(-Math.min(delta, 0.05) / 0.9)
     const radius = THREE.MathUtils.lerp(
       camera.position.distanceTo(cameraControls.target),
       initial.position.distanceTo(initial.target),
@@ -263,6 +267,7 @@ function ReturningCameraControls({ isMobile, ...props }) {
       cameraControls.target.copy(initial.target)
       returning.current = false
     }
+    if (returning.current) state.invalidate()
   })
 
   return <TrackballControls ref={controls} {...props} />
@@ -275,10 +280,19 @@ function SingleCloud({ isMobile, isCartoon }) {
   const cartoonUniform = useRef({ value: 0 })
   const pixelUnitsUniform = useRef({ value: 4 })
   const viewDistanceUniform = useRef({ value: 10.5 })
+  const contourSmoothingUniform = useRef({ value: 0.1 })
 
   useLayoutEffect(() => {
     cartoonUniform.current.value = isCartoon ? 1 : 0
+    // Flat opaque sprites need real depth occlusion, rather than transparency sorting.
+    clouds.current.traverse((node) => {
+      if (node.isMesh && node.material) node.material.depthWrite = isCartoon
+    })
   }, [isCartoon])
+
+  useLayoutEffect(() => {
+    contourSmoothingUniform.current.value = isMobile ? 0.05 : 0.1
+  }, [isMobile])
 
   useLayoutEffect(() => {
     const originals = []
@@ -295,6 +309,7 @@ function SingleCloud({ isMobile, isCartoon }) {
         shader.uniforms.cloudPixelUnits = pixelUnitsUniform.current
         shader.uniforms.cloudViewDistance = viewDistanceUniform.current
         shader.uniforms.cloudOutlinePass = CLOUD_OUTLINE_PASS
+        shader.uniforms.cloudContourSmoothing = contourSmoothingUniform.current
         shader.vertexShader = `uniform float cloudCartoon;\nuniform float cloudPixelUnits;\nuniform float cloudViewDistance;\nvarying vec2 vCloudPixelGrid;\nvarying float vCloudFront;\nvarying float vCloudDepth;\n${shader.vertexShader}`
         shader.vertexShader = shader.vertexShader.replace(
           "#include <project_vertex>",
@@ -315,39 +330,46 @@ function SingleCloud({ isMobile, isCartoon }) {
           `#include <fog_vertex>
           vCloudPixelGrid = max(vec2(4.0), floor(vec2(length(instanceMatrix[0].xyz), length(instanceMatrix[1].xyz)) * cloudPixelUnits + 0.5));`
         )
-        shader.fragmentShader = `uniform float cloudCartoon;\nuniform float cloudOutlinePass;\nvarying vec2 vCloudPixelGrid;\nvarying float vCloudFront;\nvarying float vCloudDepth;\n${shader.fragmentShader}`
+        shader.fragmentShader = `uniform float cloudCartoon;\nuniform float cloudOutlinePass;\nuniform float cloudContourSmoothing;\nvarying vec2 vCloudPixelGrid;\nvarying float vCloudFront;\nvarying float vCloudDepth;\n${shader.fragmentShader}`
         shader.fragmentShader = shader.fragmentShader.replace(
           "#include <map_fragment>",
-          `#include <map_fragment>
+          `if (cloudCartoon < 0.5) {
+          #include <map_fragment>
+          }
           #ifdef USE_MAP
           if (cloudCartoon > 0.5) {
             // Keep the pixel pattern attached to each cloud instead of re-sampling screen cells.
             vec2 pixelUv = (floor(vMapUv * vCloudPixelGrid) + 0.5) / vCloudPixelGrid;
-            // Keep 80% of the blocky contour, with just 20% smoothing.
-            pixelUv = mix(pixelUv, vMapUv, 0.2);
-            diffuseColor = vec4(diffuse, opacity) * texture2D(map, pixelUv);
+            // Smooth density at a fixed mip, never across a pixel's interior.
+            // UV blending produced partially filled cells and hairline cracks.
+            float contourMip = 3.5 + cloudContourSmoothing * 2.0;
+            vec4 pixelSample = texture2DLodEXT(map, pixelUv, contourMip);
+            diffuseColor = vec4(diffuse, opacity) * pixelSample;
             // Average neighboring cells to remove small spikes and isolated pixels.
             vec2 tap = 1.0 / vCloudPixelGrid;
             diffuseColor.a = opacity * (
-              texture2D(map, pixelUv).a * 4.0 +
-              texture2D(map, pixelUv + vec2(tap.x, 0.0)).a * 2.0 +
-              texture2D(map, pixelUv - vec2(tap.x, 0.0)).a * 2.0 +
-              texture2D(map, pixelUv + vec2(0.0, tap.y)).a * 2.0 +
-              texture2D(map, pixelUv - vec2(0.0, tap.y)).a * 2.0 +
-              texture2D(map, pixelUv + tap).a +
-              texture2D(map, pixelUv - tap).a +
-              texture2D(map, pixelUv + vec2(tap.x, -tap.y)).a +
-              texture2D(map, pixelUv + vec2(-tap.x, tap.y)).a
+              pixelSample.a * 4.0 +
+              texture2DLodEXT(map, pixelUv + vec2(tap.x, 0.0), contourMip).a * 2.0 +
+              texture2DLodEXT(map, pixelUv - vec2(tap.x, 0.0), contourMip).a * 2.0 +
+              texture2DLodEXT(map, pixelUv + vec2(0.0, tap.y), contourMip).a * 2.0 +
+              texture2DLodEXT(map, pixelUv - vec2(0.0, tap.y), contourMip).a * 2.0 +
+              texture2DLodEXT(map, pixelUv + tap, contourMip).a +
+              texture2DLodEXT(map, pixelUv - tap, contourMip).a +
+              texture2DLodEXT(map, pixelUv + vec2(tap.x, -tap.y), contourMip).a +
+              texture2DLodEXT(map, pixelUv + vec2(-tap.x, tap.y), contourMip).a
             ) / 16.0;
           }
           #endif
           // Separate wispy edges from dense cores without tinting the white highlights.
-          diffuseColor.a = mix(diffuseColor.a, smoothstep(0.04, 0.96, diffuseColor.a), 0.6);`
-        )
-        shader.fragmentShader = shader.fragmentShader.replace(
-          "#include <dithering_fragment>",
-          `#include <dithering_fragment>
-          if (cloudOutlinePass > 0.5) gl_FragColor = vec4(vCloudDepth, 0.0, 0.0, gl_FragColor.a);`
+          diffuseColor.a = mix(diffuseColor.a, smoothstep(0.04, 0.96, diffuseColor.a), 0.6);
+          if (cloudCartoon > 0.5) {
+            if (diffuseColor.a < 0.24) discard;
+            // The mask needs only coverage and depth, not lighting or cel shading.
+            if (cloudOutlinePass > 0.5) {
+              gl_FragColor = vec4(vCloudDepth, 0.0, 0.0, 1.0);
+              return;
+            }
+          }`
         )
         shader.fragmentShader = shader.fragmentShader.replace(
           "gl_FragColor = vec4(outgoingLight, diffuseColor.a * vOpacity);",
@@ -386,6 +408,8 @@ function SingleCloud({ isMobile, isCartoon }) {
             #endif
             vec3 paint = mix(vec3(0.48, 0.65, 0.85), vec3(1.8), shade);
             float silhouette = step(0.24, density);
+            // Transparent sprite corners must not occlude clouds behind them.
+            if (silhouette < 0.5) discard;
             gl_FragColor = vec4(paint, silhouette);
           }`
         )
@@ -403,7 +427,7 @@ function SingleCloud({ isMobile, isCartoon }) {
           }`
         )
       }
-      material.customProgramCacheKey = () => "cloud-flat-aligned-pixel-v13"
+      material.customProgramCacheKey = () => "cloud-flat-aligned-pixel-v15"
       material.needsUpdate = true
     })
     return () => {
