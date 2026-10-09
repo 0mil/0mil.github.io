@@ -1,7 +1,7 @@
 import * as THREE from "three"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useLayoutEffect, useRef, useState } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
-import { Clouds, Cloud, CameraControls, Sky as SkyImpl } from "@react-three/drei"
+import { Clouds, Cloud, TrackballControls, Sky as SkyImpl } from "@react-three/drei"
 
 const CLOUD_ANIMATION_SPEED = 1.32
 
@@ -39,25 +39,117 @@ export default function App() {
       <directionalLight position={[4, 8, 6]} intensity={2.5} color="#ffffff" />
       <directionalLight position={[-6, 2, 4]} intensity={1.25} color="#dfe8f1" />
       <SingleCloud isMobile={isMobile} />
-      <CameraControls
+      <ReturningCameraControls
+        key={isMobile ? "mobile" : "desktop"}
+        isMobile={isMobile}
         makeDefault
-        smoothTime={0.65}
         minDistance={isMobile ? 9.8 : 8.5}
         maxDistance={isMobile ? 11.2 : 10.5}
-        truckSpeed={0}
-        dollySpeed={0}
-        minPolarAngle={Math.PI / (isMobile ? 2.15 : 2.25)}
-        maxPolarAngle={Math.PI / (isMobile ? 1.82 : 1.78)}
-        azimuthRotateSpeed={isMobile ? 0.28 : 0.45}
-        polarRotateSpeed={isMobile ? 0.22 : 0.3}
+        noPan
+        noZoom
+        staticMoving
+        rotateSpeed={isMobile ? 0.7 : 0.85}
       />
     </Canvas>
   )
 }
 
+function ReturningCameraControls({ isMobile, ...props }) {
+  const controls = useRef()
+  const home = useRef()
+  const returning = useRef(false)
+  const offset = useRef(new THREE.Vector3())
+
+  useEffect(() => {
+    const cameraControls = controls.current
+    const camera = cameraControls.object
+    let returnTimer
+
+    cameraControls.update()
+    home.current = {
+      position: camera.position.clone(),
+      quaternion: camera.quaternion.clone(),
+      up: camera.up.clone(),
+      target: cameraControls.target.clone(),
+    }
+    returning.current = false
+
+    const onStart = () => {
+      window.clearTimeout(returnTimer)
+      returning.current = false
+    }
+    const onEnd = () => {
+      window.clearTimeout(returnTimer)
+      returnTimer = window.setTimeout(() => {
+        returning.current = true
+      }, 500)
+    }
+
+    cameraControls.addEventListener("start", onStart)
+    cameraControls.addEventListener("end", onEnd)
+    return () => {
+      window.clearTimeout(returnTimer)
+      returning.current = false
+      cameraControls.removeEventListener("start", onStart)
+      cameraControls.removeEventListener("end", onEnd)
+    }
+  }, [isMobile])
+
+  useFrame((state, delta) => {
+    if (!returning.current || !home.current) return
+
+    const cameraControls = controls.current
+    const camera = cameraControls.object
+    const initial = home.current
+    const blend = 1 - Math.exp(-delta / 0.9)
+    const radius = THREE.MathUtils.lerp(
+      camera.position.distanceTo(cameraControls.target),
+      initial.position.distanceTo(initial.target),
+      blend
+    )
+
+    // Interpolate orientation around the cloud, rather than cutting through it.
+    camera.quaternion.slerp(initial.quaternion, blend)
+    cameraControls.target.lerp(initial.target, blend)
+    camera.position.copy(offset.current.set(0, 0, radius).applyQuaternion(camera.quaternion)).add(cameraControls.target)
+    camera.up.set(0, 1, 0).applyQuaternion(camera.quaternion)
+
+    if (camera.quaternion.angleTo(initial.quaternion) < 0.001 && camera.position.distanceTo(initial.position) < 0.001) {
+      camera.position.copy(initial.position)
+      camera.quaternion.copy(initial.quaternion)
+      camera.up.copy(initial.up)
+      cameraControls.target.copy(initial.target)
+      returning.current = false
+    }
+  })
+
+  return <TrackballControls ref={controls} {...props} />
+}
+
 function SingleCloud({ isMobile }) {
   const group = useRef()
   const cloud = useRef()
+  const clouds = useRef()
+
+  useLayoutEffect(() => {
+    clouds.current.traverse((node) => {
+      if (!node.isMesh || !node.material) return
+
+      const material = node.material
+      const compileCloudShader = material.onBeforeCompile
+      material.onBeforeCompile = (shader, renderer) => {
+        compileCloudShader.call(material, shader, renderer)
+        shader.fragmentShader = shader.fragmentShader.replace(
+          "#include <map_fragment>",
+          `#include <map_fragment>
+          // Separate wispy edges from dense cores without tinting the white highlights.
+          diffuseColor.a = mix(diffuseColor.a, smoothstep(0.04, 0.96, diffuseColor.a), 0.6);`
+        )
+      }
+      material.customProgramCacheKey = () => "cloud-density-contrast-v1"
+      material.needsUpdate = true
+    })
+  }, [])
   const config = isMobile
     ? {
         ...BASE_CLOUD_CONFIG,
@@ -85,7 +177,7 @@ function SingleCloud({ isMobile }) {
     <>
       <SkyImpl sunPosition={[8, 6, 2]} turbidity={5} rayleigh={0.4} mieCoefficient={0.01} mieDirectionalG={0.85} />
       <group ref={group} position={isMobile ? [0, 0.35, 0] : [0, 0.1, 0]} scale={isMobile ? 1.18 : 1}>
-        <Clouds material={THREE.MeshLambertMaterial} limit={180} range={12}>
+        <Clouds ref={clouds} material={THREE.MeshLambertMaterial} limit={180} range={12}>
           <Cloud ref={cloud} {...config} />
         </Clouds>
       </group>
