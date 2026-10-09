@@ -612,6 +612,26 @@ img {
   color: var(--text-primary);
 }
 
+.experience-role {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.experience-supervisor {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.experience-description {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
 .news-list-template .news-item {
   grid-template-columns: 1fr;
   gap: 0.2rem;

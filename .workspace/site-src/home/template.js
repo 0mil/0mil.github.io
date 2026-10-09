@@ -159,7 +159,7 @@ export function renderHomePage({ site, home, publications, projects }) {
               ${home.experience
                 .map(
                   (item) => `<div class="news-item">
-                <span class="news-text"><strong>${escapeHtml(item.organization)}</strong><br>${escapeHtml(item.role)}</span>
+                <div class="news-text"><div class="experience-organization"><strong>${escapeHtml(item.organization)}</strong></div><div class="experience-role">${escapeHtml(item.role)}${item.supervisor ? `<span class="experience-supervisor"> · ${escapeHtml(item.supervisor)}</span>` : ""}</div>${item.description ? `<div class="experience-description">${escapeHtml(item.description)}</div>` : ""}</div>
                 <span class="news-date">${escapeHtml(item.period)}</span>
               </div>`
                 )

@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { Clouds, Cloud, CameraControls, Sky as SkyImpl } from "@react-three/drei"
 
+const CLOUD_ANIMATION_SPEED = 1.32
+
 const BASE_CLOUD_CONFIG = {
   seed: 7,
   segments: 28,
@@ -11,7 +13,7 @@ const BASE_CLOUD_CONFIG = {
   opacity: 0.82,
   fade: 18,
   growth: 5,
-  speed: 0.14,
+  speed: 0.14 * CLOUD_ANIMATION_SPEED,
   color: "#ffffff",
 }
 
@@ -70,12 +72,13 @@ function SingleCloud({ isMobile }) {
       return
     }
 
-    const t = state.clock.elapsedTime
-    group.current.rotation.y += delta * (isMobile ? 0.09 : 0.12)
+    const t = state.clock.elapsedTime * CLOUD_ANIMATION_SPEED
+    const animationDelta = delta * CLOUD_ANIMATION_SPEED
+    group.current.rotation.y += animationDelta * (isMobile ? 0.09 : 0.12)
     group.current.rotation.x = Math.sin(t * 0.32) * (isMobile ? 0.06 : 0.08)
     group.current.position.y = Math.sin(t * 0.45) * (isMobile ? 0.12 : 0.16)
     group.current.position.x = Math.sin(t * 0.18) * (isMobile ? 0.08 : 0.04)
-    cloud.current.rotation.y -= delta * (isMobile ? 0.16 : 0.22)
+    cloud.current.rotation.y -= animationDelta * (isMobile ? 0.16 : 0.22)
   })
 
   return (

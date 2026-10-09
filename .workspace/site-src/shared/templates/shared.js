@@ -16,7 +16,7 @@ export function renderHead({ site, pageTitle, description, toRoot }) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="${site.fontsUrl}" rel="stylesheet">
   <link rel="stylesheet" href="${site.fontAwesomeUrl}">
-  <link rel="stylesheet" href="${resolvePath(toRoot, "assets/styles.css")}">
+  <link rel="stylesheet" href="${resolvePath(toRoot, "assets/styles.css")}${site.stylesVersion ? `?v=${site.stylesVersion}` : ""}">
   <script defer src="${resolvePath(toRoot, "assets/site-config.js")}"></script>
   <script defer src="${resolvePath(toRoot, "assets/analytics.js")}"></script>`
 }

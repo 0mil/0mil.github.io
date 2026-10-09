@@ -2,14 +2,14 @@
   introParagraphs: [
     [
       {
-        text: "I am an ML engineer with industry experience in game production and AI-driven content pipelines. I aim to build perceptually-aware graphics systems by integrating human perception into these pipelines. My research interests focus on ",
+        text: "I am currently a research intern at ComPLightLab, University College London, working with Prof. Kaan Akşit. My background includes industry experience in game production and AI-driven content pipelines. My research interests focus on ",
       },
       {
-        text: "perceptual-aware graphics, inverse rendering, and neural 3D representations",
+        text: "perceptual graphics, inverse rendering, and neural 3D representations",
         strong: true,
       },
       {
-        text: ". I am currently seeking a research internship in computer graphics and vision.",
+        text: ". I am seeking PhD opportunities in perceptual graphics and computational displays.",
       },
     ],
     [
@@ -41,35 +41,41 @@
   ],
   news: [
     {
+      date: "October 2026",
+      parts: [
+        {
+          text: "Seeking PhD opportunities",
+          href: "files/Jin-Hyeong%20Park,%20CV.pdf",
+          accent: true,
+        },
+        { text: " in perceptual graphics and computational displays." },
+      ],
+    },
+    {
       date: "May 2026",
       parts: [
-        { text: "[Upcoming] " },
+        { text: "Presented a " },
         {
-          text: "Poster Presentation",
+          text: "poster",
           href: "publications/drc-3dgs/",
           accent: true,
         },
         { text: " at Eurographics 2026 (Aachen, Germany)" },
       ],
     },
-    {
-      date: "April 2026",
-      parts: [
-        { text: "[Open for Opportunities] " },
-        {
-          text: "Seeking Research Internships starting",
-          href: "files/Jin-Hyeong%20Park,%20CV.pdf",
-          accent: true,
-        },
-        { text: " May 2026" },
-      ],
-    },
   ],
   experience: [
     {
+      organization: "ComPLightLab, University College London",
+      role: "Research Intern",
+      supervisor: "With Prof. Kaan Akşit",
+      description: "Explicit Representations, Computational Holography, Steganography.",
+      period: "Apr 2026 - Present",
+    },
+    {
       organization: "AI Research Institute, Neowiz",
-      role: "Machine Learning Engineer",
-      period: "Dec 2020 - Present",
+      role: "Research Engineer",
+      period: "Dec 2020 - Aug 2026",
     },
     {
       organization: "Machine Intelligence Lab, CAU",

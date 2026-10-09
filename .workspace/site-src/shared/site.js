@@ -1,7 +1,7 @@
 ﻿export const site = {
   title: "Jin-Hyeong Park",
   description:
-    "Jin-Hyeong Park is an ML engineer working at the intersection of computer graphics and machine learning, with interests in perceptual-aware graphics, inverse rendering, and neural 3D representations.",
+    "Jin-Hyeong Park is a research intern at ComPLightLab, University College London, working with Prof. Kaan Akşit, with interests in perceptual graphics, inverse rendering, and neural 3D representations.",
   faviconPath: "images/favicon.svg",
   profileImagePath: "images/profile_2026.png",
   cvPath: "files/Jin-Hyeong%20Park,%20CV.pdf",

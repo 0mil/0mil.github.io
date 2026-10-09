@@ -1,4 +1,5 @@
 import fs from "node:fs"
+import { createHash } from "node:crypto"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 
@@ -14,6 +15,11 @@ import { renderProjectPage } from "../site-src/projects/template.js"
 import { renderRedirectPage } from "../site-src/shared/templates/redirect.js"
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..")
+
+site.stylesVersion = createHash("sha256")
+  .update(fs.readFileSync(path.join(repoRoot, "assets/styles.css")))
+  .digest("hex")
+  .slice(0, 12)
 
 function writeFile(relativePath, content) {
   const outputPath = path.join(repoRoot, relativePath)
