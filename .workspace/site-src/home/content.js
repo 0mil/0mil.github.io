@@ -9,7 +9,7 @@
         strong: true,
       },
       {
-        text: ". I am seeking PhD opportunities in perceptual graphics and computational displays.",
+        text: ". My goal is to develop representations of light and visual content that account for human perception. I am currently seeking PhD opportunities in these areas.",
       },
     ],
     [
@@ -48,7 +48,7 @@
           href: "files/Jin-Hyeong%20Park,%20CV.pdf",
           accent: true,
         },
-        { text: " in perceptual graphics and computational displays." },
+        { text: " in perceptual graphics and visual representations." },
       ],
     },
     {
