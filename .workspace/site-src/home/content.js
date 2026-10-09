@@ -2,7 +2,7 @@
   introParagraphs: [
     [
       {
-        text: "I am currently a research intern at ComPLightLab, University College London, working with Prof. Kaan Akşit. My background includes industry experience in game production and AI-driven content pipelines. My research interests focus on ",
+        text: "I am currently a research intern at the Computational Light Laboratory, University College London, working with Prof. Kaan Akşit. My background includes industry experience in game production and AI-driven content pipelines. My research interests focus on ",
       },
       {
         text: "perceptual graphics, inverse rendering, and neural 3D representations",
@@ -66,7 +66,7 @@
   ],
   experience: [
     {
-      organization: "ComPLightLab, University College London",
+      organization: "Computational Light Laboratory, University College London",
       role: "Research Intern",
       supervisor: "With Prof. Kaan Akşit",
       description: "Explicit Representations, Computational Holography, Steganography.",
