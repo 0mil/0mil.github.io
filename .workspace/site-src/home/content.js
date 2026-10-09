@@ -5,7 +5,7 @@
         text: "I am currently a research intern at the Computational Light Laboratory, University College London, working with Prof. Kaan Akşit. My background includes industry experience in game production and AI-driven content pipelines. My research interests focus on ",
       },
       {
-        text: "perceptual graphics, inverse rendering, and neural 3D representations",
+        text: "perceptual\u00a0graphics, inverse\u00a0rendering, and neural\u00a03D\u00a0representations",
         strong: true,
       },
       {
