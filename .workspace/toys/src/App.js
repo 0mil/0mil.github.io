@@ -62,8 +62,8 @@ export default function App() {
         className="cartoon-toggle"
         type="button"
         aria-pressed={isCartoon}
-        aria-label="Pixel rendering"
-        title={isCartoon ? "Turn pixel rendering off" : "Turn pixel rendering on"}
+        aria-label="Cartoon rendering"
+        title={isCartoon ? "Turn cartoon rendering off" : "Turn cartoon rendering on"}
         onClick={() => setIsCartoon((enabled) => !enabled)}>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <rect x="3" y="3" width="7" height="7" rx="1" />
@@ -74,6 +74,48 @@ export default function App() {
       </button>
     </div>
   )
+}
+
+function CartoonSky({ enabled }) {
+  const sky = useRef()
+  const cartoon = useRef({ value: 0 })
+  const invalidate = useThree((state) => state.invalidate)
+
+  useLayoutEffect(() => {
+    cartoon.current.value = enabled ? 1 : 0
+    invalidate()
+  }, [enabled, invalidate])
+
+  useLayoutEffect(() => {
+    const material = sky.current.material
+    const compile = material.onBeforeCompile
+    const cacheKey = material.customProgramCacheKey
+    material.onBeforeCompile = (shader, renderer) => {
+      compile.call(material, shader, renderer)
+      shader.uniforms.skyCartoon = cartoon.current
+      shader.fragmentShader = `uniform float skyCartoon;\n${shader.fragmentShader}`
+      shader.fragmentShader = shader.fragmentShader.replace(
+        "#include <colorspace_fragment>",
+        `#include <colorspace_fragment>
+        if (skyCartoon > 0.5) {
+          // Five broad, flat sky tones in the existing blue-to-pale-blue palette.
+          // Quantize luminance together, avoiding unrelated RGB color stripes.
+          float light = dot(gl_FragColor.rgb, vec3(0.2126, 0.7152, 0.0722));
+          float band = floor(clamp((light - 0.55) / 0.35, 0.0, 0.999) * 5.0) / 4.0;
+          gl_FragColor.rgb = mix(vec3(0.49, 0.61, 0.72), vec3(0.86, 0.91, 0.92), band);
+        }`
+      )
+    }
+    material.customProgramCacheKey = () => "cloud-cartoon-sky-v1"
+    material.needsUpdate = true
+    return () => {
+      material.onBeforeCompile = compile
+      material.customProgramCacheKey = cacheKey
+      material.needsUpdate = true
+    }
+  }, [])
+
+  return <SkyImpl ref={sky} sunPosition={[8, 6, 2]} turbidity={5} rayleigh={0.4} mieCoefficient={0.01} mieDirectionalG={0.85} />
 }
 
 function CloudOutline({ enabled, isMobile }) {
@@ -470,7 +512,7 @@ function SingleCloud({ isMobile, isCartoon }) {
 
   return (
     <>
-      <SkyImpl sunPosition={[8, 6, 2]} turbidity={5} rayleigh={0.4} mieCoefficient={0.01} mieDirectionalG={0.85} />
+      <CartoonSky enabled={isCartoon} />
       <group ref={group} position={isMobile ? [0, 0.35, 0] : [0, 0.1, 0]} scale={isMobile ? 1.18 : 1}>
         <Clouds ref={clouds} material={THREE.MeshLambertMaterial} limit={180} range={12}>
           <Cloud ref={cloud} {...config} speed={isCartoon ? 0 : config.speed} />
