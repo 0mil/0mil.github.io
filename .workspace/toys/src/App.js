@@ -23,6 +23,7 @@ const BASE_CLOUD_CONFIG = {
 export default function App() {
   const [isMobile, setIsMobile] = useState(false)
   const [isCartoon, setIsCartoon] = useState(false)
+  const [isDarkBackground, setIsDarkBackground] = useState(false)
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 640px)")
@@ -37,12 +38,13 @@ export default function App() {
     : { position: [0, -4.5, 9.5], fov: 52 }, [isMobile])
 
   return (
-    <div className="cloud-viewer">
+    <div className={`cloud-viewer${isDarkBackground ? " is-dark" : ""}`}>
       <Canvas frameloop={isCartoon ? "demand" : "always"} dpr={isMobile ? [1, 1.35] : [1, 1.75]} camera={camera}>
-      <color attach="background" args={["#eef3f7"]} />
+      <color attach="background" args={[isDarkBackground ? "#000000" : "#eef3f7"]} />
       <ambientLight intensity={Math.PI / 1.7} />
       <directionalLight position={[4, 8, 6]} intensity={2.5} color="#ffffff" />
       <directionalLight position={[-6, 2, 4]} intensity={1.25} color="#dfe8f1" />
+      <CartoonSky enabled={isCartoon} visible={!isDarkBackground} />
       <SingleCloud isMobile={isMobile} isCartoon={isCartoon} />
       <CloudOutline enabled={isCartoon} isMobile={isMobile} />
       <ReturningCameraControls
@@ -58,6 +60,7 @@ export default function App() {
         rotateSpeed={isMobile ? 0.7 : 0.85}
       />
       </Canvas>
+      <div className="cloud-controls">
       <button
         className="cartoon-toggle"
         type="button"
@@ -72,11 +75,26 @@ export default function App() {
           <rect x="14" y="14" width="7" height="7" rx="1" />
         </svg>
       </button>
+      <button
+        className="cartoon-toggle"
+        type="button"
+        aria-pressed={isDarkBackground}
+        aria-label="Dark background"
+        title={isDarkBackground ? "Restore sky background" : "Use black background"}
+        onClick={() => setIsDarkBackground((enabled) => !enabled)}>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          {isDarkBackground ? <>
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+          </> : <path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z" />}
+        </svg>
+      </button>
+      </div>
     </div>
   )
 }
 
-function CartoonSky({ enabled }) {
+function CartoonSky({ enabled, visible }) {
   const sky = useRef()
   const cartoon = useRef({ value: 0 })
   const invalidate = useThree((state) => state.invalidate)
@@ -84,7 +102,7 @@ function CartoonSky({ enabled }) {
   useLayoutEffect(() => {
     cartoon.current.value = enabled ? 1 : 0
     invalidate()
-  }, [enabled, invalidate])
+  }, [enabled, visible, invalidate])
 
   useLayoutEffect(() => {
     const material = sky.current.material
@@ -102,11 +120,12 @@ function CartoonSky({ enabled }) {
           // Quantize luminance together, avoiding unrelated RGB color stripes.
           float light = dot(gl_FragColor.rgb, vec3(0.2126, 0.7152, 0.0722));
           float band = floor(clamp((light - 0.55) / 0.35, 0.0, 0.999) * 5.0) / 4.0;
-          gl_FragColor.rgb = mix(vec3(0.49, 0.61, 0.72), vec3(0.86, 0.91, 0.92), band);
+          // A clean pale blue keeps the lightest sky distinct from white clouds.
+          gl_FragColor.rgb = mix(vec3(0.49, 0.61, 0.72), vec3(0.78, 0.88, 0.96), band);
         }`
       )
     }
-    material.customProgramCacheKey = () => "cloud-cartoon-sky-v1"
+    material.customProgramCacheKey = () => "cloud-cartoon-sky-v2"
     material.needsUpdate = true
     return () => {
       material.onBeforeCompile = compile
@@ -115,7 +134,7 @@ function CartoonSky({ enabled }) {
     }
   }, [])
 
-  return <SkyImpl ref={sky} sunPosition={[8, 6, 2]} turbidity={5} rayleigh={0.4} mieCoefficient={0.01} mieDirectionalG={0.85} />
+  return <SkyImpl ref={sky} visible={visible} sunPosition={[8, 6, 2]} turbidity={5} rayleigh={0.4} mieCoefficient={0.01} mieDirectionalG={0.85} />
 }
 
 function CloudOutline({ enabled, isMobile }) {
@@ -512,7 +531,6 @@ function SingleCloud({ isMobile, isCartoon }) {
 
   return (
     <>
-      <CartoonSky enabled={isCartoon} />
       <group ref={group} position={isMobile ? [0, 0.35, 0] : [0, 0.1, 0]} scale={isMobile ? 1.18 : 1}>
         <Clouds ref={clouds} material={THREE.MeshLambertMaterial} limit={180} range={12}>
           <Cloud ref={cloud} {...config} speed={isCartoon ? 0 : config.speed} />

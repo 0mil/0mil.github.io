@@ -22,10 +22,15 @@ body {
   overflow: hidden;
 }
 
-.cartoon-toggle {
+.cloud-controls {
   position: absolute;
   right: 14px;
   bottom: 14px;
+  display: flex;
+  gap: 8px;
+}
+
+.cartoon-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -51,6 +56,21 @@ body {
   pointer-events: auto;
 }
 
+.cloud-viewer.is-dark .cartoon-toggle {
+  color: #eef3f7;
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.cloud-viewer.is-dark .cartoon-toggle:hover,
+.cloud-viewer.is-dark .cartoon-toggle[aria-pressed="true"] {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.cloud-viewer.is-dark .cartoon-toggle:focus-visible {
+  outline-color: #eef3f7;
+}
+
 .cartoon-toggle:hover {
   opacity: 1;
   background: rgba(255, 255, 255, 0.6);
@@ -68,9 +88,12 @@ body {
 }
 
 @media (max-width: 640px) {
-  .cartoon-toggle {
+  .cloud-controls {
     right: 10px;
     bottom: 10px;
+  }
+
+  .cartoon-toggle {
     min-height: 44px;
     width: 44px;
   }
