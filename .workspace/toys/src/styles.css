@@ -76,6 +76,12 @@ body {
   background: rgba(255, 255, 255, 0.6);
 }
 
+.cloud-control-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
 .cartoon-toggle[aria-pressed="true"] {
   background: rgba(48, 78, 101, 0.55);
   color: #ffffff;

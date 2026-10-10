@@ -2,11 +2,19 @@ import * as THREE from "three"
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
 import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { Clouds, Cloud, TrackballControls, Sky as SkyImpl } from "@react-three/drei"
+import { faMoon, faSun, faTableCellsLarge } from "@fortawesome/free-solid-svg-icons"
 
 const CLOUD_ANIMATION_SPEED = 1.32
 const CLOUD_DRAG_DAMPING = 0.18
 const CLOUD_PIXEL_SCALE = 2.7
 const CLOUD_OUTLINE_PASS = { value: 0 }
+
+function ControlIcon({ icon }) {
+  const [width, height, , , paths] = icon.icon
+  return <svg className="cloud-control-icon" viewBox={`0 0 ${width} ${height}`} fill="currentColor" aria-hidden="true">
+    {(Array.isArray(paths) ? paths : [paths]).map((path, index) => <path key={index} d={path} />)}
+  </svg>
+}
 
 const BASE_CLOUD_CONFIG = {
   seed: 7,
@@ -68,12 +76,7 @@ export default function App() {
         aria-label="Cartoon rendering"
         title={isCartoon ? "Turn cartoon rendering off" : "Turn cartoon rendering on"}
         onClick={() => setIsCartoon((enabled) => !enabled)}>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <rect x="3" y="3" width="7" height="7" rx="1" />
-          <rect x="14" y="3" width="7" height="7" rx="1" opacity="0.5" />
-          <rect x="3" y="14" width="7" height="7" rx="1" opacity="0.5" />
-          <rect x="14" y="14" width="7" height="7" rx="1" />
-        </svg>
+        <ControlIcon icon={faTableCellsLarge} />
       </button>
       <button
         className="cartoon-toggle"
@@ -82,12 +85,7 @@ export default function App() {
         aria-label="Dark background"
         title={isDarkBackground ? "Restore sky background" : "Use black background"}
         onClick={() => setIsDarkBackground((enabled) => !enabled)}>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          {isDarkBackground ? <>
-            <circle cx="12" cy="12" r="4" />
-            <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
-          </> : <path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z" />}
-        </svg>
+        <ControlIcon icon={isDarkBackground ? faSun : faMoon} />
       </button>
       </div>
     </div>
@@ -115,17 +113,21 @@ function CartoonSky({ enabled, visible }) {
       shader.fragmentShader = shader.fragmentShader.replace(
         "#include <colorspace_fragment>",
         `#include <colorspace_fragment>
+        float skyLight = dot(gl_FragColor.rgb, vec3(0.2126, 0.7152, 0.0722));
         if (skyCartoon > 0.5) {
           // Five broad, flat sky tones in the existing blue-to-pale-blue palette.
           // Quantize luminance together, avoiding unrelated RGB color stripes.
-          float light = dot(gl_FragColor.rgb, vec3(0.2126, 0.7152, 0.0722));
-          float band = floor(clamp((light - 0.55) / 0.35, 0.0, 0.999) * 5.0) / 4.0;
-          // A clean pale blue keeps the lightest sky distinct from white clouds.
-          gl_FragColor.rgb = mix(vec3(0.49, 0.61, 0.72), vec3(0.78, 0.88, 0.96), band);
+          float band = floor(clamp((skyLight - 0.55) / 0.35, 0.0, 0.999) * 5.0) / 4.0;
+          // Clear blue highlights separate the sky from the unchanged white cloud.
+          gl_FragColor.rgb = mix(vec3(0.49, 0.61, 0.72), vec3(0.65, 0.80, 0.93), band);
+        } else {
+          // Retain the sky gradient, bringing only its bright region toward clear blue.
+          float blueBlend = smoothstep(0.66, 0.90, skyLight) * 0.8;
+          gl_FragColor.rgb = mix(gl_FragColor.rgb, vec3(0.65, 0.80, 0.93), blueBlend);
         }`
       )
     }
-    material.customProgramCacheKey = () => "cloud-cartoon-sky-v2"
+    material.customProgramCacheKey = () => "cloud-cartoon-sky-v3"
     material.needsUpdate = true
     return () => {
       material.onBeforeCompile = compile
