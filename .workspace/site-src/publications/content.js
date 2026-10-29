@@ -11,7 +11,8 @@ export const publications = [
     },
     links: [
       { href: "publications/drc-3dgs/", label: "project page" },
-      { href: "files/poster1019_CRC_full.pdf", label: "paper" },
+      { href: "files/egp20261014_jinpark.pdf", label: "paper" },
+      { href: "publications/drc-3dgs/#BibTeX", label: "bibtex" },
     ],
     featured: true,
   },
