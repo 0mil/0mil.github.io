@@ -4,7 +4,7 @@ export const publications = [
     unlisted: true,
     title: "Double-Phase Hologram Steganography using Keyed Gabor Splatting Representations",
     authors: "Jin-Hyeong Park, Yicheng Zhan, Kaan Akşit",
-    venue: "Under review at Optics Letters",
+    venue: "Optics Letters (Under Review)",
     image: {
       type: "image",
       src: "publications/holographic-steganography/static/images/hardware.png",
