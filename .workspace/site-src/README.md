@@ -7,7 +7,7 @@ This folder is organized by the part of the site you are likely to edit.
 - `projects/`
   project card data and the shared project detail template
 - `publications/`
-  publication card data
+  publication card data and the shared publication detail template
 - `gallery/`
   gallery data and gallery page template
 - `shared/`

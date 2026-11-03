@@ -18,6 +18,7 @@ Do not hand-edit these unless you are debugging generated output temporarily.
 - `gallery/index.html`
 - `projects/*/index.html` for generated project pages
 - `publications/index.html`
+- `publications/<slug>/index.html` for entries with `detail` in publication content
 - `assets/site-config.js`
 
 After changing content or templates, rebuild them instead of editing output files directly.
@@ -60,6 +61,14 @@ Then verify:
 2. Run `./build-site.ps1`.
 
 Use the shared card structure unless the publication truly needs a rich custom page like `drc-3dgs`.
+
+For a publication page in the DRC style, add `slug` and `detail` to the entry.
+The shared `publications/template.js` generates `/publications/<slug>/index.html`.
+Keep page styling and figures inside that publication folder.
+
+Set `unlisted: true` for a publication shared by direct URL only. It is omitted
+from both homepage publication lists while its detail page is still generated
+with `noindex, nofollow`. Anyone with the URL can access the page.
 
 ### New project
 

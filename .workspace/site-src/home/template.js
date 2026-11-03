@@ -84,8 +84,9 @@ function renderExperience(item) {
 export function renderHomePage({ site, home, publications, projects }) {
   const recentExperience = home.experience.filter((item) => !item.earlier)
   const earlierExperience = home.experience.filter((item) => item.earlier)
-  const featuredPublications = publications.filter((item) => item.featured)
-  const earlierPublications = publications.filter((item) => !item.featured)
+  const listedPublications = publications.filter((item) => !item.unlisted)
+  const featuredPublications = listedPublications.filter((item) => item.featured)
+  const earlierPublications = listedPublications.filter((item) => !item.featured)
 
   const body = `  <div class="container">
     <header class="header header-minimal">

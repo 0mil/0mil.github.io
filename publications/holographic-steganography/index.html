@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Hiding information in double-phase holograms with keyed Gabor Splatting representations while preserving holographic reconstruction quality.">
+  <title>Double-Phase Hologram Steganography using Keyed Gabor Splatting Representations</title>
+  <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="../drc-3dgs/static/css/bulma.min.css">
+  <link rel="stylesheet" href="../drc-3dgs/static/css/index.css">
+  <link rel="stylesheet" href="./static/css/project.css">
+  <script defer src="../../assets/site-config.js"></script>
+  <script defer src="../../assets/analytics.js"></script>
+</head>
+<body data-theme="light">
+  <nav class="project-nav" aria-label="Project navigation">
+    <a href="../../">Home</a>
+    <div><a href="#overview">Overview</a><a href="#method">Method</a><a href="#results">Results</a></div>
+  </nav>
+
+  <header class="hero publication-header">
+    <div class="hero-body">
+      <div class="container is-max-desktop has-text-centered">
+        <h1 class="title is-1 publication-title">Double-Phase Hologram Steganography using Keyed Gabor Splatting Representations</h1>
+        <p class="publication-venue">Under review at Optics Letters</p>
+        <p class="is-size-5 publication-authors"><span class="author-block"><a href="../../">Jin-Hyeong Park</a><sup>1</sup></span>, <span class="author-block">Yicheng Zhan<sup>2</sup></span>, <span class="author-block">Kaan Akşit<sup>2</sup></span></p>
+        <p class="publication-affiliations"><span class="author-block"><sup>1</sup>Independent Researcher</span> <span class="author-block"><sup>2</sup>University College London</span></p>
+        <div class="publication-links">
+          <a class="button is-rounded is-dark" href="../../files/holographic-steganography-manuscript.pdf">Manuscript <span class="file-type">PDF</span></a>
+          <a class="button is-rounded is-dark" href="../../files/holographic-steganography-supplement.pdf">Supplement <span class="file-type">PDF</span></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="project-main">
+    <section class="teaser has-text-centered" aria-label="Research overview">
+      <p class="project-summary">An explicit hologram representation that carries hidden information while preserving the quality of the reconstructed image.</p>
+      <dl class="research-highlights" aria-label="Key findings">
+        <div><dt>Reconstruction PSNR vs. RoSteALS</dt><dd class="highlight-value">+2.23 dB</dd><dd class="highlight-context">100-bit payload · 200 sources</dd></div>
+        <div><dt>Evaluated payload range</dt><dd class="highlight-value">25–1,000 bits</dd><dd class="highlight-context">Embedding error below fitting error</dd></div>
+        <div><dt>Payloads recovered exactly</dt><dd class="highlight-value">4,500 / 4,500</dd><dd class="highlight-context">After saving and reloading</dd></div>
+      </dl>
+      <figure>
+        <div class="comparison-scroll" tabindex="0" role="region" aria-label="Reconstruction comparison; scroll horizontally to see all methods">
+          <a class="figure-link" href="./static/images/comparison.png" aria-label="View full-size reconstruction comparison">
+            <img src="./static/images/comparison.png" width="2085" height="444"
+                 alt="Reference and 100-bit reconstructions from INRSteg, GaussianImage, RoSteALS, and our Gabor Splatting method.">
+          </a>
+        </div>
+        <div class="mobile-comparison">
+          <a class="figure-link reference-panel" href="./static/images/comparison.png" aria-label="View the complete five-method comparison">
+            <img src="./static/images/comparison.png" width="2085" height="444" alt="Reference reconstruction and stored phase, shown in the first panel of the comparison figure.">
+          </a>
+          <a class="figure-link ours-panel" href="./static/images/comparison.png" aria-label="View the complete five-method comparison">
+            <img src="./static/images/comparison.png" width="2085" height="444" alt="Our Gabor Splatting reconstruction and stored phase, shown in the last panel of the comparison figure.">
+          </a>
+        </div>
+        <p class="mobile-comparison-note">Reference and Ours. <a href="./static/images/comparison.png">View all methods</a>.</p>
+        <p class="scroll-hint">Scroll horizontally to compare all methods.</p>
+        <figcaption>An illustrative 100-bit comparison. Diagonal panels show the reconstructed image and stored phase; insets enlarge the same 40 × 40 image crop. The upper annotations are reconstruction PSNR / SSIM / LPIPS; lower annotations are aligned phase PSNR / SSIM.</figcaption>
+      </figure>
+    </section>
+
+    <section class="project-section" id="overview" aria-labelledby="overview-heading">
+      <h2 class="title is-3" id="overview-heading">Information hiding in holographic content</h2>
+      <div class="section-copy">
+          <p>Computer-generated holograms are the content of emerging holographic displays, yet remain largely unexplored as steganographic carriers. Their phase patterns must form the intended image after optical propagation, so information hiding must account for reconstruction quality as well as phase fidelity.</p>
+          <p>We embed bits in the parameters of a saved explicit representation, after the hologram has been generated. A double-phase hologram is separated into its two checkerboard components and fitted with oscillatory 2D Gabor primitives. The resulting state supports both holographic reconstruction and keyed payload recovery, allowing hidden information to travel with represented holographic content.</p>
+      </div>
+    </section>
+
+    <section class="project-section" id="method" aria-labelledby="method-heading">
+      <h2 class="title is-3" id="method-heading">From a phase pattern to a keyed representation</h2>
+      <div class="method-layout">
+        <a class="figure-link method-figure" href="./static/images/method.png" aria-label="View full-size method pipeline">
+          <img src="./static/images/method.png" width="893" height="1200" loading="lazy"
+               alt="Pipeline: unpack the checkerboard hologram, fit two Gabor states, select a carrier by optical sensitivity, and use keyed QIM for embedding and recovery.">
+        </a>
+        <div class="method-copy">
+          <p>The pipeline separates representation fitting, optical sensitivity analysis, and keyed embedding. Sensitivity analysis is performed once per display setting; the fitted state is then modified for each payload.</p>
+          <ol class="method-steps">
+              <li><strong>Fit the phase components.</strong> Unpack the checkerboard and fit each component with 2D Gabor primitives. A circular loss respects phase periodicity, and the fitted output is wrapped modulo 2π.</li>
+              <li><strong>Select a carrier optically.</strong> Perturb parameter families independently and measure the reconstructed image. This identifies effective log amplitude in the high-value component as the embedding carrier.</li>
+              <li><strong>Embed with a shared key.</strong> Keyed Quantization Index Modulation (QIM) encodes each bit by the parity of a quantized amplitude index. The low-value component remains unchanged.</li>
+              <li><strong>Recover from the saved state.</strong> The shared key regenerates carrier selection, ordering, and dithers from primitive identities. Decoding uses the saved parameters rather than the rendered phase or an optical capture.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section" id="results" aria-labelledby="results-heading">
+      <h2 class="title is-3" id="results-heading">Reconstruction quality at a fixed payload</h2>
+      <div class="section-copy">
+        <p>The fixed 100-bit benchmark uses one centered 512 × 512 patch from each of 200 sources: 100 CLIC 2020 and 100 DIV2K images. Each patch is reinserted into its full hologram before propagation, and the focused reconstruction is compared with the clean hologram’s reconstruction.</p>
+      </div>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Quantitative results; scroll horizontally for all metrics">
+        <table class="benchmark-table">
+          <caption>Mean quality at 100 bits over 200 sources</caption>
+          <thead>
+            <tr><th scope="col">Method</th><th scope="col">PDA-PSNR ↑</th><th scope="col">PSNR ↑</th><th scope="col">SSIM ↑</th><th scope="col">LPIPS ↓</th></tr>
+          </thead>
+          <tbody>
+              <tr><th scope="row">INRSteg</th><td>24.44</td><td>20.17</td><td>0.325</td><td>0.759</td></tr>
+              <tr><th scope="row">GaussianImage-16k</th><td>40.17</td><td>37.89</td><td>0.917</td><td>0.138</td></tr>
+              <tr><th scope="row">GaussianImage-24k</th><td>39.78</td><td>37.57</td><td>0.910</td><td>0.143</td></tr>
+              <tr><th scope="row">RoSteALS</th><td>40.80</td><td>40.78</td><td>0.973</td><td>0.048</td></tr>
+              <tr class="our-result"><th scope="row">Gabor Splatting (Ours)</th><td><strong>45.64</strong></td><td><strong>43.01</strong></td><td><strong>0.974</strong></td><td><strong>0.029</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-hint">Scroll horizontally to see all reconstruction metrics.</p>
+      <p class="figure-note">PDA-PSNR measures aligned phase fidelity; PSNR, SSIM, and LPIPS-Alex measure holographic reconstruction quality. PSNR values are in dB. Higher is better except for LPIPS.</p>
+      <div class="section-copy benchmark-discussion">
+        <p>Gabor Splatting achieves the highest mean reconstruction PSNR and lowest LPIPS among the evaluated methods. Its PSNR gain over RoSteALS is 2.23 dB (95% CI: 1.98–2.49 dB), with higher PSNR on 173 of 200 sources. Their mean SSIM differs by only 0.001.</p>
+        <p>Gabor Splatting uses 16k primitives per component and 384k stored parameters per patch. GaussianImage-16k uses 256k parameters; GaussianImage-24k matches the 384k parameter budget. At equal stored parameter count, our reconstruction PSNR is 5.44 dB higher. The comparison matches parameters, not runtime.</p>
+      </div>
+
+      <article class="result-block" aria-labelledby="payload-heading">
+        <div class="result-copy">
+          <h3 class="title is-4" id="payload-heading">How much distortion does embedding add?</h3>
+          <p>Across 25–1,000 bits, embedding distortion remains below representation fitting error. On 100 CLIC sources, the end-to-end reconstruction PSNR changes by less than 0.001 dB over this range. Improving the representation is therefore the larger opportunity for improving image quality.</p>
+        </div>
+        <figure>
+          <a class="figure-link" href="./static/images/payload-distortion.png" aria-label="View full-size payload distortion plot">
+            <img src="./static/images/payload-distortion.png" width="929" height="759" loading="lazy"
+                 alt="Across 25 to 1,000 bits, embedding-only reconstruction PSNR decreases while end-to-end reconstruction PSNR stays nearly constant. Gabor Splatting has higher end-to-end fidelity than GaussianImage.">
+          </a>
+          <figcaption>Payload study on 100 CLIC sources. Top: reconstruction fidelity before vs. after embedding. Bottom: original-hologram vs. stego reconstruction fidelity, including fitting error. Shading shows source-level 95% intervals.</figcaption>
+        </figure>
+      </article>
+
+      <article class="result-block" aria-labelledby="hardware-heading">
+        <div class="result-copy">
+          <h3 class="title is-4" id="hardware-heading">Optical validation</h3>
+          <p>Physical display captures show comparable scene structure and local detail before and after 100-bit embedding under identical settings. This complements the simulated propagation benchmark with an optical check of the reconstructed content.</p>
+        </div>
+        <figure>
+          <a class="figure-link" href="./static/images/hardware.png" aria-label="View full-size optical captures">
+            <img src="./static/images/hardware.png" width="975" height="594" loading="lazy"
+                 alt="Optical captures before and after embedding 100 bits, showing comparable scene structure and local detail.">
+          </a>
+          <figcaption>Before and after embedding, with matched crops indicated by color. Payload recovery is from the saved representation and shared key.</figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <section class="project-section" aria-labelledby="scope-heading">
+      <h2 class="title is-3" id="scope-heading">Scope and next steps</h2>
+      <div class="section-copy">
+          <p>The experiments cover single-plane holograms. Extending the method to multiple depths requires preserving reconstruction quality at every plane. The current Gabor implementation is also substantially slower than GaussianImage.</p>
+          <p>The saved-state decoder recovers all 4,500 tested payloads after save and reload. Supplementary experiments also test primitive reordering, reduced-precision storage, and keyless detection. These evaluations apply to the tested protocols and classifiers.</p>
+      </div>
+      <div class="project-resources">
+        <p>Code and data will be released upon acceptance.</p>
+        <p>Questions about this work? <a href="mailto:jhpark.4745@gmail.com">Contact Jin-Hyeong Park</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="project-footer">
+    <p>Page based on the <a href="https://nerfies.github.io/">Nerfies</a> template.</p>
+  </footer>
+</body>
+</html>

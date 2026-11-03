@@ -12,6 +12,7 @@ import { site } from "../site-src/shared/site.js"
 import { renderGalleryPage } from "../site-src/gallery/template.js"
 import { renderHomePage } from "../site-src/home/template.js"
 import { renderProjectPage } from "../site-src/projects/template.js"
+import { renderPublicationPage } from "../site-src/publications/template.js"
 import { renderRedirectPage } from "../site-src/shared/templates/redirect.js"
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..")
@@ -51,6 +52,10 @@ writeFile("gallery/index.html", renderGalleryPage({ site, gallery }))
 writeFile("assets/site-config.js", buildSiteConfig())
 
 projects.forEach(buildProjectTemplate)
+
+publications.filter((publication) => publication.slug && publication.detail).forEach((publication) => {
+  writeFile(`publications/${publication.slug}/index.html`, renderPublicationPage({ site, publication }))
+})
 
 redirects.forEach((redirect) => {
   writeFile(

@@ -1,5 +1,79 @@
 export const publications = [
   {
+    slug: "holographic-steganography",
+    unlisted: true,
+    title: "Double-Phase Hologram Steganography using Keyed Gabor Splatting Representations",
+    authors: "Jin-Hyeong Park, Yicheng Zhan, Kaan Akşit",
+    venue: "Under review at Optics Letters",
+    image: {
+      type: "image",
+      src: "publications/holographic-steganography/static/images/hardware.png",
+      alt: "Optical captures before and after embedding a 100-bit payload",
+    },
+    links: [
+      { href: "publications/holographic-steganography/", label: "project page" },
+      { href: "files/holographic-steganography-manuscript.pdf", label: "manuscript" },
+      { href: "files/holographic-steganography-supplement.pdf", label: "supplement" },
+    ],
+    featured: true,
+    detail: {
+      description: "Hiding information in double-phase holograms with keyed Gabor Splatting representations while preserving holographic reconstruction quality.",
+      authors: [
+        { name: "Jin-Hyeong Park", affiliation: "1", href: "../../" },
+        { name: "Yicheng Zhan", affiliation: "2" },
+        { name: "Kaan Akşit", affiliation: "2" },
+      ],
+      affiliations: [
+        { id: "1", name: "Independent Researcher" },
+        { id: "2", name: "University College London" },
+      ],
+      summary: "An explicit hologram representation that carries hidden information while preserving the quality of the reconstructed image.",
+      highlights: [
+        { value: "+2.23 dB", label: "Reconstruction PSNR vs. RoSteALS", context: "100-bit payload · 200 sources" },
+        { value: "25–1,000 bits", label: "Evaluated payload range", context: "Embedding error below fitting error" },
+        { value: "4,500 / 4,500", label: "Payloads recovered exactly", context: "After saving and reloading" },
+      ],
+      comparisonCaption: "An illustrative 100-bit comparison. Diagonal panels show the reconstructed image and stored phase; insets enlarge the same 40 × 40 image crop. The upper annotations are reconstruction PSNR / SSIM / LPIPS; lower annotations are aligned phase PSNR / SSIM.",
+      motivation: [
+        "Computer-generated holograms are the content of emerging holographic displays, yet remain largely unexplored as steganographic carriers. Their phase patterns must form the intended image after optical propagation, so information hiding must account for reconstruction quality as well as phase fidelity.",
+        "We embed bits in the parameters of a saved explicit representation, after the hologram has been generated. A double-phase hologram is separated into its two checkerboard components and fitted with oscillatory 2D Gabor primitives. The resulting state supports both holographic reconstruction and keyed payload recovery, allowing hidden information to travel with represented holographic content.",
+      ],
+      overview: "The pipeline separates representation fitting, optical sensitivity analysis, and keyed embedding. Sensitivity analysis is performed once per display setting; the fitted state is then modified for each payload.",
+      steps: [
+        { title: "Fit the phase components", text: "Unpack the checkerboard and fit each component with 2D Gabor primitives. A circular loss respects phase periodicity, and the fitted output is wrapped modulo 2π." },
+        { title: "Select a carrier optically", text: "Perturb parameter families independently and measure the reconstructed image. This identifies effective log amplitude in the high-value component as the embedding carrier." },
+        { title: "Embed with a shared key", text: "Keyed Quantization Index Modulation (QIM) encodes each bit by the parity of a quantized amplitude index. The low-value component remains unchanged." },
+        { title: "Recover from the saved state", text: "The shared key regenerates carrier selection, ordering, and dithers from primitive identities. Decoding uses the saved parameters rather than the rendered phase or an optical capture." },
+      ],
+      setup: "The fixed 100-bit benchmark uses one centered 512 × 512 patch from each of 200 sources: 100 CLIC 2020 and 100 DIV2K images. Each patch is reinserted into its full hologram before propagation, and the focused reconstruction is compared with the clean hologram’s reconstruction.",
+      benchmarkRows: [
+        { method: "INRSteg", values: ["24.44", "20.17", "0.325", "0.759"] },
+        { method: "GaussianImage-16k", values: ["40.17", "37.89", "0.917", "0.138"] },
+        { method: "GaussianImage-24k", values: ["39.78", "37.57", "0.910", "0.143"] },
+        { method: "RoSteALS", values: ["40.80", "40.78", "0.973", "0.048"] },
+        { method: "Gabor Splatting (Ours)", values: ["45.64", "43.01", "0.974", "0.029"], ours: true },
+      ],
+      result: "Gabor Splatting achieves the highest mean reconstruction PSNR and lowest LPIPS among the evaluated methods. Its PSNR gain over RoSteALS is 2.23 dB (95% CI: 1.98–2.49 dB), with higher PSNR on 173 of 200 sources. Their mean SSIM differs by only 0.001.",
+      benchmarkNote: "PDA-PSNR measures aligned phase fidelity; PSNR, SSIM, and LPIPS-Alex measure holographic reconstruction quality. PSNR values are in dB. Higher is better except for LPIPS.",
+      parameterNote: "Gabor Splatting uses 16k primitives per component and 384k stored parameters per patch. GaussianImage-16k uses 256k parameters; GaussianImage-24k matches the 384k parameter budget. At equal stored parameter count, our reconstruction PSNR is 5.44 dB higher. The comparison matches parameters, not runtime.",
+      payload: {
+        title: "How much distortion does embedding add?",
+        text: "Across 25–1,000 bits, embedding distortion remains below representation fitting error. On 100 CLIC sources, the end-to-end reconstruction PSNR changes by less than 0.001 dB over this range. Improving the representation is therefore the larger opportunity for improving image quality.",
+        caption: "Payload study on 100 CLIC sources. Top: reconstruction fidelity before vs. after embedding. Bottom: original-hologram vs. stego reconstruction fidelity, including fitting error. Shading shows source-level 95% intervals.",
+      },
+      hardware: {
+        title: "Optical validation",
+        text: "Physical display captures show comparable scene structure and local detail before and after 100-bit embedding under identical settings. This complements the simulated propagation benchmark with an optical check of the reconstructed content.",
+        caption: "Before and after embedding, with matched crops indicated by color. Payload recovery is from the saved representation and shared key.",
+      },
+      scope: [
+        "The experiments cover single-plane holograms. Extending the method to multiple depths requires preserving reconstruction quality at every plane. The current Gabor implementation is also substantially slower than GaussianImage.",
+        "The saved-state decoder recovers all 4,500 tested payloads after save and reload. Supplementary experiments also test primitive reordering, reduced-precision storage, and keyless detection. These evaluations apply to the tested protocols and classifiers.",
+      ],
+      releaseNote: "Code and data will be released upon acceptance.",
+    },
+  },
+  {
     slug: "drc-3dgs",
     title: "Decoupled Reprojection Consistency for Diagnosing 3D Gaussian Splatting Failures",
     authors: "Jin-Hyeong Park",
