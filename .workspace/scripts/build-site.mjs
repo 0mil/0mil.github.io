@@ -22,6 +22,19 @@ site.stylesVersion = createHash("sha256")
   .digest("hex")
   .slice(0, 12)
 
+// A changed CV gets a new URL so browsers request the updated PDF.
+const cvPath = site.cvPath.split("?")[0]
+const cvVersion = createHash("sha256")
+  .update(fs.readFileSync(path.join(repoRoot, decodeURIComponent(cvPath))))
+  .digest("hex")
+  .slice(0, 12)
+site.cvPath = `${cvPath}?v=${cvVersion}`
+home.news.forEach((item) => {
+  item.parts.forEach((part) => {
+    if (part.href === cvPath) part.href = site.cvPath
+  })
+})
+
 function writeFile(relativePath, content) {
   const outputPath = path.join(repoRoot, relativePath)
   fs.mkdirSync(path.dirname(outputPath), { recursive: true })

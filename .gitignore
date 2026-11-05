@@ -19,3 +19,6 @@ v2_template/
 .workspace/toys/build/
 site-dist/
 
+# Local-only Typst CV sources, tools, and previews
+/cv-local/
+

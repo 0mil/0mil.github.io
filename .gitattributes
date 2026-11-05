@@ -1,0 +1,2 @@
+# Preserve PDFs as binary files when committing and checking out on Windows.
+*.pdf binary
